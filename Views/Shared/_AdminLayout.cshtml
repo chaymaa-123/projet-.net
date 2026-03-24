@@ -1,0 +1,81 @@
+﻿<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Admin Bio Red</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+</head>
+<body class="bg-gray-100">
+
+    <div class="flex">
+        <aside class="bg-white fixed w-64 h-full shadow-lg z-50">
+            <div class="flex items-center justify-center space-x-3 mt-5">
+                <div>
+                    <a class="navbar-brand" asp-action="Index">
+                        <img src="~/img/logo_.net.png"
+                             alt="Readify Logo"
+                             width="120"
+                             height="auto"
+                             class="d-inline-block align-text-top" />
+                    </a>
+                </div>
+            </div>
+
+            <nav class="mt-6">
+                <div class="px-6 space-y-2">
+                    <a asp-controller="Admin" asp-action="Index"
+                       class="flex items-center p-3 space-x-3 rounded-lg hover:bg-pink-50 text-gray-700">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </a>
+
+                    <a asp-controller="Admin" asp-action="Livre"
+                       class="flex items-center p-3 space-x-3 rounded-lg hover:bg-pink-50 text-gray-700">
+                        <i class="fas fa-box"></i>
+                        <span>Livres</span>
+                    </a>
+
+                    <a asp-controller="Admin" asp-action="Genre"
+                       class="flex items-center p-3 space-x-3 rounded-lg hover:bg-pink-50 text-gray-700">
+                        <i class="fa-solid fa-list"></i>
+                        <span>Genre</span>
+                    </a>
+
+                    <a asp-controller="admin" asp-action="utilisateurs"
+                       class="flex items-center p-3 space-x-3 rounded-lg hover:bg-pink-50 text-gray-700">
+                        <i class="fa-solid fa-user-tie"></i>
+                        <span>compte</span>
+                    </a>
+                    <a asp-controller="admin" asp-action="commandes"
+                       class="flex items-center p-3 space-x-3 rounded-lg hover:bg-pink-50 text-gray-700">
+                        <i class="fas fa-box"></i>
+                        <span>commande</span>
+                    </a>
+
+                    <a asp-controller="Admin" asp-action="Statistiques"
+                       class="flex items-center p-3 space-x-3 rounded-lg hover:bg-pink-50 text-gray-700">
+                        <i class="fas fa-chart-bar"></i>
+                        <span>Statistiques</span>
+                    </a>
+
+                    <form asp-controller="Account" asp-action="Logout" method="post">
+                        <button type="submit" class="w-full flex items-center p-3 space-x-3 rounded-lg text-red-600 hover:bg-red-50">
+                            <i class="fas fa-sign-out-alt"></i>
+                            <span>Déconnexion</span>
+                        </button>
+                    </form>
+                </div>
+            </nav>
+        </aside>
+
+        <main class="ml-64 p-8 w-full">
+            @RenderBody()
+        </main>
+    </div>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

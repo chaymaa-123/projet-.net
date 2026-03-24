@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Readify.Models.Genre>
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Gestion des Genres";
+}
+
+<div >
+    @* --- HEADER --- *@
+    <header class="flex justify-between items-center mb-10">
+        <div>
+            <h1 class="text-3xl font-extrabold text-gray-900">Gestion des Genres</h1>
+            <p class="text-gray-500">Organisez les catégories de votre bibliothèque.</p>
+        </div>
+        <button onclick="openGenreModal(0, '')" class="bg-purple-600 hover:bg-purple-700 text-white px-6 py-3 rounded-2xl font-bold shadow-lg transition-all transform hover:scale-105 flex items-center gap-2">
+            <i class="fas fa-plus"></i> Nouveau Genre
+        </button>
+    </header>
+
+    @* --- STATS CARDS --- *@
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100 flex items-center gap-5">
+            <div class="w-14 h-14 bg-purple-50 rounded-2xl flex items-center justify-center text-purple-600 text-2xl">
+                <i class="fas fa-layer-group"></i>
+            </div>
+            <div>
+                <p class="text-sm text-gray-500 font-medium">Total Categories</p>
+                <p class="text-2xl font-black text-gray-900">@ViewBag.TotalGenres</p>
+            </div>
+        </div>
+    </div>
+
+    @* --- TABLEAU --- *@
+    <div class="bg-white rounded-3xl shadow-sm border border-gray-100 overflow-hidden">
+        <table class="w-full text-left border-collapse">
+            <thead class="bg-gray-50/50 border-b border-gray-100">
+                <tr>
+                    <th class="px-6 py-5 text-sm font-bold text-gray-600 uppercase">Nom du Genre</th>
+                    <th class="px-6 py-5 text-sm font-bold text-gray-600 uppercase">Nombre de Livres</th>
+                    <th class="px-6 py-5 text-sm font-bold text-gray-600 uppercase text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                @foreach (var item in Model)
+                {
+                    <tr class="hover:bg-gray-50/80 transition-colors">
+                        <td class="px-6 py-4">
+                            <p class="font-black text-gray-900 text-lg">@item.NomGenre</p>
+                        </td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 bg-purple-50 text-purple-600 text-xs font-bold rounded-full uppercase">
+                                @(item.Livres?.Count ?? 0) Livres
+                            </span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex justify-center gap-3">
+                                <button onclick="openGenreModal(@item.GenreID, '@Html.Raw(item.NomGenre.Replace("'", "\\'"))')"
+                                        class="w-10 h-10 flex items-center justify-center bg-purple-50 text-purple-600 rounded-xl hover:bg-purple-600 hover:text-white transition-all shadow-sm">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button onclick="confirmDeleteGenre(@item.GenreID)"
+                                        class="w-10 h-10 flex items-center justify-center bg-red-50 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition-all shadow-sm">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* --- MODAL GENRE --- *@
+<div id="genreModal" class="fixed inset-0 bg-gray-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-[2.5rem] w-full max-w-md overflow-hidden shadow-2xl">
+        <div class="bg-purple-600 p-8 text-white flex justify-between items-center">
+            <h2 id="modalTitle" class="text-2xl font-black uppercase tracking-tight">Genre</h2>
+            <button onclick="closeModal()" class="text-white/50 hover:text-white"><i class="fas fa-times text-xl"></i></button>
+        </div>
+
+        <form asp-action="UpsertGenre" method="post" class="p-8 space-y-6">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="GenreID" id="inputGenreID" />
+
+            <div class="space-y-2">
+                <label class="block text-sm font-black text-gray-700 uppercase ml-1">Nom de la catégorie</label>
+                <input name="NomGenre" id="inputNomGenre" class="w-full border-2 border-gray-100 bg-gray-50/50 rounded-2xl p-4 outline-none focus:border-purple-500 focus:bg-white transition-all" required />
+            </div>
+
+            <div class="flex justify-end gap-4 pt-4">
+                <button type="button" onclick="closeModal()" class="px-6 py-3 text-gray-400 font-bold uppercase text-xs tracking-widest">Annuler</button>
+                <button type="submit" class="bg-purple-600 hover:bg-purple-700 text-white font-black px-10 py-4 rounded-2xl shadow-xl transition-all transform hover:scale-105 uppercase tracking-widest text-xs">
+                    Enregistrer
+                </button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@* FORM CACHÉ POUR SUPPRESSION *@
+<form id="deleteGenreForm" asp-action="DeleteGenre" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" id="deleteGenreId" />
+</form>
+
+<script>
+    const modal = document.getElementById('genreModal');
+
+    function openGenreModal(id, nom) {
+        document.getElementById('inputGenreID').value = id;
+        document.getElementById('inputNomGenre').value = nom;
+        document.getElementById('modalTitle').innerText = id === 0 ? "Nouveau Genre" : "Modifier Genre";
+        modal.classList.remove('hidden');
+    }
+
+    function closeModal() {
+        modal.classList.add('hidden');
+    }
+
+    function confirmDeleteGenre(id) {
+        if (confirm("Voulez-vous supprimer ce genre ? Attention : cela peut affecter les livres associés.")) {
+            document.getElementById('deleteGenreId').value = id;
+            document.getElementById('deleteGenreForm').submit();
+        }
+    }
+</script>

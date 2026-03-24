@@ -1,0 +1,218 @@
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery-validation\dist\jquery.validate.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery\dist\jquery.min.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\js\site.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery\dist\jquery.slim.min.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\css\site.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery\LICENSE.txt
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery\dist\jquery.min.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery\dist\jquery.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\favicon.ico
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery-validation\LICENSE.md
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery-validation\dist\additional-methods.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery\dist\jquery.slim.min.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+C:\Users\Chaymae\source\repos\projet .net\WebApplication1\wwwroot\lib\jquery\dist\jquery.slim.js
+wwwroot\css\site.css
+wwwroot\favicon.ico
+wwwroot\img\003effd6-cc06-46d4-b86a-2631ad059931_181e0481e2e2ae20ca77265011dd13cff4b59c29.jpg
+wwwroot\img\01a8d81c-7658-4095-b662-14a6fffb259a_images (1).jfif
+wwwroot\img\01f7ed50-2b59-4ef3-a93e-54ec9a48916b_le_bal_de_fin_d_annee.webp
+wwwroot\img\0b280542-ca1c-449f-945d-f75ff6aa1da7_9782845650534_1_75.jpg
+wwwroot\img\0c0f6133-25d4-40c9-a8f1-921f25554a9b_61+jjLKfo-L._SL240_CATL,225,225_RO112,1,0,0,0,0,0,0,8_.jpg
+wwwroot\img\0e9f051e-91d3-43ce-a01c-33fee15b142e_affiche_les-jours-heureux.jpg
+wwwroot\img\10530794-2b2e-4ea3-b819-9c13804faa68_nom-de-code-tome-1-alpha-5544680.jpg
+wwwroot\img\15db1038-a7dc-4bb3-9d6a-c16e4f51b0bb_9781784082628_1_75.jpg
+wwwroot\img\161ef53a-c62f-4886-b0db-b6b2de6f114c_les_heritiers_dungardia_tome_1_lascension_dune_heritiere-5352687-264-432.jfif
+wwwroot\img\1c18740c-f1c1-4a42-9e09-861c6e812ee3_L'Ombre du Chêne.jpg
+wwwroot\img\224338a1-5c84-4da1-b69b-ce96d4bad4e0_promesse de l'hiver.jpg
+wwwroot\img\2cd09702-88dd-4765-a6da-a861dcf0953a_lhorloge_a_lenvers_tome_1_le_diable_noir-4928954-264-432.jfif
+wwwroot\img\2fec446d-a429-4049-aed8-a4585ee2f649_51BwGLOOZBL._SX195_.jpg
+wwwroot\img\3.png
+wwwroot\img\3218a60b-7b5e-4f29-a6f7-779f0bf560ce_DEMAIN_MUSSO.jpg
+wwwroot\img\34957168-dbdd-4f7e-944b-48a3b671e3a6_les oubliees.jfif
+wwwroot\img\37a994c4-b14e-4511-bcfa-7dd2b421403d_Instants-voles.jpg
+wwwroot\img\37c0ab94-58d0-43de-bae2-fb868e0cb6fa_la Tasse de Thé.jpg
+wwwroot\img\386c6700-81d3-4932-af6c-f412b090799d_9782070545902_1_75.jpg
+wwwroot\img\3afc905c-f31d-4829-a0ca-2fcfff2e8b54_images (2).jfif
+wwwroot\img\3cf12713-0c09-4ecd-87b5-c18aac569b47_Les naufragés de l'île Tromelin .jpg
+wwwroot\img\44b5278e-1949-4358-8a5b-c507a50c7f7a_Le Code des Rebelles.webp
+wwwroot\img\46c690c8-22dc-4546-8748-7e75fcd604d8_la_cible.webp
+wwwroot\img\48733efd-7670-4eec-94ce-f0330909824f_9782384625185_w300.jpg
+wwwroot\img\4a8aa8a3-f1bc-43dd-a39d-19dd757f37a9_Les Mines d'Or.jpg
+wwwroot\img\50621ad6-6cef-42de-801f-838c423b20ac_9782756017778-1.jpg
+wwwroot\img\526a2174-bcf1-4457-bb3f-77bfbfc45f8a_L'Été de mes 16 ans.jfif
+wwwroot\img\532838c8-73d8-4c69-9c54-fb5bf9d6a500_Le Goût du Sel.jfif
+wwwroot\img\556abe33-e629-4757-b602-7ab5135733fa_51WUvOsG+NL._AC_UF1000,1000_QL80_.jpg
+wwwroot\img\55d834de-7536-4306-b02a-56b93b1fc5ac_Vies Parallèles.jpg
+wwwroot\img\56e4c957-7a78-4821-9092-55424a95daa5_L'Appel de la Forêt.jpg
+wwwroot\img\578c1936-f09c-4df1-9193-3718e8c0ebbf_la_cite_des_songes.jfif
+wwwroot\img\5823aea0-9db2-4e34-9833-e9e8d6c3a36a_Histoires d'Ailleurs.jpg
+wwwroot\img\5be23357-75f4-4233-b2e4-c6ebf28afa32_Parfum d'Automne.jfif
+wwwroot\img\5d912945-313b-4518-923c-3184dde1c21b_41E5XK3nb4L._AC_UF1000,1000_QL80_.jpg
+wwwroot\img\60902108-da28-43d8-819c-ed656a015c69_fin de partie.jpg
+wwwroot\img\64a744bd-3945-49f9-9c21-8f6ba7769064_71ikHeAbFgL._UF1000,1000_QL80_.jpg
+wwwroot\img\697dd839-b3eb-4b28-819b-8a4c7a7f3637_41MNafFnc5L._AC_UF894,1000_QL80_.jpg
+wwwroot\img\6c3b2298-913b-4130-9b88-1ccbae072d45_images (5).jfif
+wwwroot\img\6d33f740-602c-4e6c-b58f-092a9bdbb2a9_nos Éclats de Miroir.jfif
+wwwroot\img\6eff2604-963f-42b8-becb-5c3053463f1a_images (3).jfif
+wwwroot\img\7357b835-5ec4-4963-98fc-85ae0be56506_s-l1200.jpg
+wwwroot\img\7a0d4d19-6f50-46ad-883c-c133aa764c6a_images (4).jfif
+wwwroot\img\7f0ebca7-e06e-4029-9608-57e8d3ff4220_WhatsApp Image 2025-12-02 at 23.38.15_3a31a3bc.jpg
+wwwroot\img\7f2f69d2-d9ba-4a6f-bfe9-767f0de864e3_la-prophetie.jpg
+wwwroot\img\7f72d8f6-2719-4053-813d-9d18c159ec6b_old-vengeance_froide.0.jpg
+wwwroot\img\80e3ebc7-8186-4e4d-b1a1-8e363ef8720a_Capture d’écran (346).png
+wwwroot\img\8386b00f-395f-40de-9e1e-1427dc5a2564_71m3EiAylhL._AC_UF1000,1000_QL80_.jpg
+wwwroot\img\889d6eaf-23d9-4284-83a3-2ca3ce1d1683_arton6369.jpg
+wwwroot\img\8973bb1b-428e-41a0-96a3-162be970606b_Le Mystère Maya.jfif
+wwwroot\img\8d0059f8-21f9-41bc-9230-aedb42681fcb_Contes de Minuit.jpg
+wwwroot\img\9080cdbd-9492-427a-bfa2-7c3faa92d247_images.jfif
+wwwroot\img\94a1fbce-3122-44b9-aa8a-705cf69df343_Une-alliance-improbable.jpg
+wwwroot\img\9641d5f3-b2ce-4845-8a6c-40573f4c7eee_img_0301.jpg
+wwwroot\img\9cab49ab-1dec-4cb0-b5e1-2ac6afdc0e67_81i2tG9-h2L._UF1000,1000_QL80_.jpg
+wwwroot\img\9de10c48-b8e2-42ce-9b98-5fc227fdfac2_La-vieille-dame-qui-ne-voulait-pas-mourir-avant-de-lavoir-refait.webp
+wwwroot\img\a07d69e5-0128-4cd1-9718-77b42e0e403b_MV5BODBmOGVhYzQtYmQ3My00YmFhLWFiODMtYTIxOTU3OWRhMjAyXkEyXkFqcGc@._V1_.jpg
+wwwroot\img\a856fcef-b9a9-4c65-be08-6fca587a0448_9782806256034_internet_h1400.jpg
+wwwroot\img\af709db9-d7d5-47cc-9494-b7e1fdcd4e6f_le-cri-du-condor.jpg
+wwwroot\img\b62e9f31-1730-4d57-a3b7-d2efc35b2576_1.webp
+wwwroot\img\b70415a9-a961-4492-b2f7-9dfae51cea36_Le Passage du Nord.jpg
+wwwroot\img\ba5154bb-6db5-4a97-8355-b284455e76cb_9782902562923_1_75.jpg
+wwwroot\img\bd60cfde-f621-4d83-8b04-c41864fb88ed_La Boussole Brisée.jfif
+wwwroot\img\bleu.png
+wwwroot\img\c160e27d-18ca-4ea7-921c-9b47deadccbb_Sous le Sable d'Égypte.jfif
+wwwroot\img\c17b844f-85a1-4b43-9161-ee30e5248196_journal d'un exile.jpg
+wwwroot\img\c67a633b-4b74-4cf8-8aa2-8b5a62195395_Au-delà des Mers.jfif
+wwwroot\img\c980defe-ed24-49c7-a32d-f49d9d8bfb9c_L'Homme Aux Mille Visages.jpg
+wwwroot\img\cb2dabca-d006-4804-8712-958e5e252928_Couv_361302.jpg
+wwwroot\img\cfb3d7e6-29a8-427c-9087-f82734360942_Le Trésor de l'Atlas.jpg
+wwwroot\img\d29e1360-6243-48f8-aae1-2a1f9403d10f_81tbc-qPLTL._AC_UF1000,1000_QL80_.jpg
+wwwroot\img\d4bdefd7-a833-4ff2-ab50-273a8f96e272_coeurs_de_glace-5708886-264-432.webp
+wwwroot\img\d83763f4-5fb4-45ac-97c9-3bfcb30141ae_Le Voyage d'Aell.jfif
+wwwroot\img\d9bcb71a-2b32-494f-a8ef-57d274369557_coeur college.jpg
+wwwroot\img\db17b4c7-e2df-4175-9bde-25ea80d8a852_nos vies en mille morceaux.jpg
+wwwroot\img\e3a30f5a-edfa-41ba-9ff7-4cb4779f9672_Caravane du Désert.jpg
+wwwroot\img\e5ce481a-ce4c-4e34-9680-b04d0a2d877a_7178rIVMPxL._AC_UF1000,1000_QL80_.jpg
+wwwroot\img\e7a1352c-9c03-40d5-a7ab-2f926683af2d_éclats_de_rire.jpg
+wwwroot\img\ed4f8460-8507-479d-8fbb-31654882bc8d_9782757899939_internet_h1400.jpg
+wwwroot\img\f0243274-5bfa-4104-80be-23a0acf74717_cafedelagare_couverture-b7286.webp
+wwwroot\img\f1a4c375-ab02-4c1d-bfa8-c87a05b95316_Le Vol de l'Aigle.jfif
+wwwroot\img\f1b6626d-847c-4c77-9e76-36f4cc06d80a_Chroniques du bout de ma Rue.jfif
+wwwroot\img\f7920d9b-c90c-44fa-a125-1574f9b31b3e_L'Horizon Bleu.jpg
+wwwroot\img\f7be6ccf-6981-4dc4-9846-6063aed3c0d7_41No8RK2RGL._SX195_.jpg
+wwwroot\img\f839c1d5-0159-45f5-bdc5-6ebb5bbb4f03_550x791.jpg
+wwwroot\img\fb59eac6-8cb5-4762-a704-22ce360f15ba_WIN_20251112_15_29_04_Pro.jpg
+wwwroot\img\fdf5eecb-db83-4057-8834-d0d76cc96af0_9791020409850_1_75.jpg
+wwwroot\img\ffb82286-33d2-4dd3-8816-feae189b2aac_heros-sans-gloire.jpg
+wwwroot\img\green.png
+wwwroot\img\logo_.net.png
+wwwroot\img\mauve.png
+wwwroot\img\mauve2.png
+wwwroot\img\R.png
+wwwroot\js\site.js
+wwwroot\lib\bootstrap\dist\css\bootstrap.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-grid.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-reboot.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.min.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.css.map
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css
+wwwroot\lib\bootstrap\dist\css\bootstrap-utilities.rtl.min.css.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.bundle.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.esm.min.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.js.map
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js
+wwwroot\lib\bootstrap\dist\js\bootstrap.min.js.map
+wwwroot\lib\bootstrap\LICENSE
+wwwroot\lib\jquery\dist\jquery.js
+wwwroot\lib\jquery\dist\jquery.min.js
+wwwroot\lib\jquery\dist\jquery.min.map
+wwwroot\lib\jquery\dist\jquery.slim.js
+wwwroot\lib\jquery\dist\jquery.slim.min.js
+wwwroot\lib\jquery\dist\jquery.slim.min.map
+wwwroot\lib\jquery\LICENSE.txt
+wwwroot\lib\jquery-validation\dist\additional-methods.js
+wwwroot\lib\jquery-validation\dist\additional-methods.min.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.js
+wwwroot\lib\jquery-validation\dist\jquery.validate.min.js
+wwwroot\lib\jquery-validation\LICENSE.md
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.js
+wwwroot\lib\jquery-validation-unobtrusive\dist\jquery.validate.unobtrusive.min.js
+wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt

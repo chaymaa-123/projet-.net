@@ -1,0 +1,410 @@
+﻿@model IEnumerable<Readify.Models.Panier>
+@{
+    ViewData["Title"] = "Mon Panier Luxe";
+    decimal totalGeneral = Model?.Sum(i => i.Quantite * i.Livre.Prix) ?? 0;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+<style>
+    /* --- STYLE GÉNÉRAL DU PANIER (Ton style original conservé) --- */
+    #panier-unique-section {
+        --accent-pink: #ff4da6;
+        --dark-royal: #1a1a2e;
+        --soft-gray: #f8f9fa;
+        --success-green: #00b894; /* Ajout pour la confiance */
+        padding-top: 30px;
+        padding-bottom: 50px;
+    }
+
+        #panier-unique-section .panier-card {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.98);
+            border-radius: 30px;
+            padding: 40px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.05);
+            border: 1px solid #f1f2f6;
+        }
+
+        /* Tableaux et rangées */
+        #panier-unique-section .table-sexy {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0 15px;
+        }
+
+        #panier-unique-section .cart-row {
+            background: #fff;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
+        }
+
+            #panier-unique-section .cart-row td {
+                padding: 20px;
+                vertical-align: middle;
+                border-top: 1px solid #f8f9fa;
+                border-bottom: 1px solid #f8f9fa;
+            }
+
+        /* Images et contrôles */
+        #panier-unique-section .book-thumb {
+            width: 70px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        #panier-unique-section .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--soft-gray);
+            padding: 6px 15px;
+            border-radius: 50px;
+            width: fit-content;
+        }
+
+        #panier-unique-section .btn-qty {
+            border: none;
+            background: white;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: 0.3s;
+            color: var(--dark-royal);
+        }
+
+            #panier-unique-section .btn-qty:hover {
+                background: var(--accent-pink);
+                color: white;
+            }
+
+        /* Totaux et boutons */
+        #panier-unique-section .total-price {
+            font-size: 2rem;
+            font-weight: 800;
+            color: var(--accent-pink);
+        }
+
+        #panier-unique-section .btn-checkout {
+            background: var(--dark-royal);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+            display: inline-block;
+            width: 100%; /* Bouton plus large */
+            text-align: center;
+        }
+
+            #panier-unique-section .btn-checkout:hover {
+                background: var(--accent-pink);
+                transform: translateY(-3px);
+                box-shadow: 0 10px 20px rgba(255, 77, 166, 0.3);
+            }
+
+    .btn-continue-shopping {
+        color: var(--dark-royal);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        margin-right: 25px;
+        transition: 0.3s;
+        opacity: 0.7;
+    }
+
+        .btn-continue-shopping:hover {
+            opacity: 1;
+            color: var(--accent-pink);
+        }
+
+    /* --- NOUVEAU STYLE : Résumé de commande style Readify/Temu --- */
+    .summary-column {
+        max-width: 400px; /* Limite la largeur de la colonne de droite */
+        margin-left: auto; /* Pousse vers la droite */
+    }
+
+    .summary-trust-box {
+        margin-top: 25px;
+        background: #fafafa;
+        border: 1px dashed #e0e0e0;
+        border-radius: 20px;
+        padding: 25px;
+        text-align: left;
+    }
+
+    .trust-header {
+        font-size: 0.85rem;
+        font-weight: 700;
+        color: var(--success-green);
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .trust-step {
+        margin-bottom: 15px;
+        font-size: 0.8rem;
+        color: #555;
+        line-height: 1.4;
+    }
+
+        .trust-step strong {
+            display: block;
+            color: var(--dark-royal);
+            font-weight: 700;
+            margin-bottom: 4px;
+            font-size: 0.85rem;
+        }
+
+    .payment-icons {
+        display: flex;
+        gap: 5px;
+        margin-top: 5px;
+    }
+
+        .payment-icons i {
+            font-size: 1.2rem;
+            color: #666;
+        }
+
+    .emoji-bullet {
+        font-size: 1.1rem;
+        margin-right: 5px;
+    }
+
+    /* --- SECTION PANIER VIDE --- */
+    /* (Styles existants conservés) */
+    .empty-cart-container svg {
+        width: 140px;
+        height: auto;
+        margin-bottom: 20px;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .trust-badges-wrapper {
+        margin-top: 50px;
+        padding-top: 30px;
+        border-top: 1px dashed #e0e0e0;
+        display: flex;
+        justify-content: center;
+        gap: 40px;
+        flex-wrap: wrap;
+    }
+
+    .trust-item {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        max-width: 130px;
+        transition: transform 0.3s ease;
+    }
+
+        .trust-item:hover {
+            transform: translateY(-5px);
+        }
+
+    .trust-icon {
+        height: 32px;
+        width: auto;
+        margin-bottom: 12px;
+        opacity: 0.8;
+    }
+
+    .trust-item:hover .trust-icon {
+        opacity: 1;
+    }
+
+    .trust-text {
+        font-size: 0.75rem;
+        color: #666;
+        font-weight: 700;
+        line-height: 1.3;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+    }
+</style>
+
+<div id="panier-unique-section">
+    <div class="panier-card">
+        <a asp-controller="Livres" asp-action="Affichage" class="btn-continue-shopping">
+            <i class="fas fa-arrow-left me-2"></i> Continuer mes achats
+        </a>
+        <h2 class="text-center mb-5 fw-bold">Mon Panier</h2>
+
+        @if (Model != null && Model.Any())
+        {
+            <div class="row">
+                <div class="col-lg-8">
+                    <table class="table-sexy">
+                        <thead>
+                            <tr class="text-muted small fw-bold" style="letter-spacing:1px;">
+                                <th>LIVRE</th>
+                                <th>DÉTAILS</th>
+                                <th>PRIX</th>
+                                <th>QUANTITÉ</th>
+                                <th>TOTAL</th>
+                                <th></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="cart-row" id="row-@item.Id">
+                                    <td><img src="/img/@(item.Livre.ImageUrl ?? "default.jpg")" class="book-thumb" /></td>
+                                    <td><div class="fw-bold">@item.Livre.Titre</div></td>
+                                    <td>@item.Livre.Prix.ToString("N2")</td>
+                                    <td>
+                                        <div class="qty-control">
+                                            <button type="button" class="btn-qty js-qty" data-id="@item.Id" data-change="-1"><i class="fas fa-minus"></i></button>
+                                            <span id="qty-@item.Id" class="fw-bold">@item.Quantite</span>
+                                            <button type="button" class="btn-qty js-qty" data-id="@item.Id" data-change="1"><i class="fas fa-plus"></i></button>
+                                        </div>
+                                    </td>
+                                    <td class="fw-bold" style="color:var(--accent-pink)"><span id="sub-@item.Id">@((item.Quantite * item.Livre.Prix).ToString("N2"))</span> DHS</td>
+                                    <td>
+                                        <form asp-action="Supprimer" method="post" style="display:inline;">
+                                            <input type="hidden" name="id" value="@item.Id" />
+                                            <button type="submit" class="border-0 bg-transparent text-danger"><i class="fas fa-trash-alt"></i></button>
+                                        </form>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="col-lg-4">
+                    <div class="summary-column">
+                        <div class="text-end mb-3">
+                            <p class="text-muted mb-0 small fw-bold">TOTAL GÉNÉRAL</p>
+                            <div class="total-price"><span id="total-gen">@totalGeneral.ToString("N2")</span> DHS</div>
+                        </div>
+
+                        <a asp-controller="Commandes" asp-action="Valider" class="btn-checkout mb-3">
+                            Valider ma commande <i class="fas fa-chevron-right ms-2"></i>
+                        </a>
+
+                        <div class="summary-trust-box">
+                            <div class="trust-header">
+                                <i class="fas fa-shield-alt"></i> Résumé de la commande
+                            </div>
+
+                            <div class="trust-step">
+                                <strong><span class="emoji-bullet">💳</span> 1. Moyens de paiement</strong>
+                                <div class="payment-icons">
+                                    <i class="fab fa-cc-visa" style="color:#1a1f71;"></i>
+                                    <i class="fab fa-cc-mastercard" style="color:#eb001b;"></i>
+                                    <i class="fab fa-cc-paypal" style="color:#003087;"></i>
+                                    <span style="font-size:0.8rem; color:#888;">& CMI</span>
+                                </div>
+                            </div>
+
+                            <div class="trust-step">
+                                <strong><span class="emoji-bullet">🔒</span> 2. Sécurité Readify</strong>
+                                <span style="font-size:0.75rem;">Vos informations sont cryptées et sécurisées. Aucune donnée bancaire n'est stockée.</span>
+                            </div>
+
+                            <div class="trust-step">
+                                <strong><span class="emoji-bullet">⚡</span> 3. Accès Immédiat</strong>
+                                <span style="font-size:0.75rem;">Pas d'attente de livraison ! Vos e-books sont disponibles dans votre bibliothèque dès validation.</span>
+                            </div>
+
+                            <div class="trust-step mb-0">
+                                <strong><span class="emoji-bullet">🛡️</span> 4. Protection des données</strong>
+                                <span style="font-size:0.75rem;">Readify respecte votre vie privée. Garantie satisfait ou remboursé sous conditions.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+        else
+        {
+            <div class="text-center py-5">
+                <div class="empty-cart-container">
+                    <div class="empty-icon">
+                        <svg width="101" height="106" viewBox="0 0 75 75" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M57.0084 32.9753L56.5124 32.9127L57.0084 32.9753ZM54.3524 54.0241L54.8485 54.0867L54.3524 54.0241ZM24.1769 54.0241L23.6808 54.0867L24.1769 54.0241ZM25.169 55.399H53.3603V54.399H25.169V55.399ZM54.8485 54.0867L57.5045 33.0379L56.5124 32.9127L53.8563 53.9615L54.8485 54.0867ZM56.0163 31.3501H22.513V32.3501H56.0163V31.3501ZM21.0248 33.0379L23.6808 54.0867L24.673 53.9615L22.0169 32.9127L21.0248 33.0379ZM22.513 31.3501C21.61 31.3501 20.9117 32.142 21.0248 33.0379L22.0169 32.9127C21.9792 32.6141 22.212 32.3501 22.513 32.3501V31.3501ZM57.5045 33.0379C57.6176 32.142 56.9193 31.3501 56.0163 31.3501V32.3501C56.3173 32.3501 56.5501 32.6141 56.5124 32.9127L57.5045 33.0379ZM53.3603 55.399C54.1161 55.399 54.7538 54.8366 54.8485 54.0867L53.8563 53.9615C53.8248 54.2115 53.6122 54.399 53.3603 54.399V55.399ZM25.169 54.399C24.9171 54.399 24.7045 54.2115 24.673 53.9615L23.6808 54.0867C23.7754 54.8366 24.4132 55.399 25.169 55.399V54.399Z" fill="#666666"></path>
+                            <ellipse cx="26.4998" cy="64.5" rx="1.99994" ry="2" stroke="#666666"></ellipse>
+                            <ellipse cx="51.9998" cy="64.5" rx="1.99994" ry="2" stroke="#666666"></ellipse>
+                            <mask id="mask0_87_24990" style="mask-type:alpha;" maskUnits="userSpaceOnUse" x="12" y="16" width="20" height="19">
+                                <rect x="12.8748" y="16.1001" width="18.7228" height="18.7228" fill="#D9D9D9"></rect>
+                            </mask>
+                            <g mask="url(#mask0_87_24990)">
+                                <path d="M24.3616 56.1116L24.4159 56.5501H24.8578H58.6119C58.5196 62.7821 56.7036 68.8706 53.3604 74.1385C49.928 79.5472 45.0274 83.8676 39.2311 86.5952C33.4349 89.3227 26.9822 90.3447 20.6268 89.5418C14.2714 88.7389 8.27556 86.1443 3.3397 82.061C-1.59616 77.9777 -5.26831 72.5743 -7.24786 66.4819C-9.2274 60.3895 -9.43261 53.8596 -7.83952 47.6549C-7.66975 46.9937 -7.48552 46.2537 -7.28628 45.4535C-6.53195 42.4237 -5.56255 38.5302 -4.34882 34.7767C-3.58232 32.4063 -2.72255 30.1057 -1.76488 28.1271C-0.844211 26.225 0.151824 24.6529 1.21793 23.6001H19.0074C19.7645 23.6001 20.4029 24.1643 20.496 24.9156L24.3616 56.1116Z" stroke="#666666"></path>
+                            </g>
+                            <path d="M58.4918 10.475C59.08 10.475 59.5568 9.9965 59.5568 9.40625C59.5568 8.816 59.08 8.3375 58.4918 8.3375C57.9036 8.3375 57.4268 8.816 57.4268 9.40625C57.4268 9.9965 57.9036 10.475 58.4918 10.475ZM58.4918 11.1875C57.5115 11.1875 56.7168 10.39 56.7168 9.40625C56.7168 8.42249 57.5115 7.625 58.4918 7.625C59.4721 7.625 60.2668 8.42249 60.2668 9.40625C60.2668 10.39 59.4721 11.1875 58.4918 11.1875Z" fill="#999999"></path>
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M28.6249 11.6875C28.9516 11.6875 29.2165 11.4217 29.2165 11.0938C29.2165 10.7658 28.9516 10.5 28.6249 10.5C28.2981 10.5 28.0332 10.7658 28.0332 11.0938C28.0332 11.4217 28.2981 11.6875 28.6249 11.6875Z" fill="white" stroke="#CCCCCC" stroke-width="0.5"></path>
+                            <path d="M2.5918 67.5H6.28747" stroke="#666666" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M71.8164 67.5H72.9997" stroke="#666666" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M8.5083 67.5H68.8583" stroke="#666666" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M54.8 35L52.5725 52" stroke="#E1E1E1" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M13.7949 25.5L18.833 25.5" stroke="#E1E1E1" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M37.8417 22.2164C38.0182 22.3103 38.0825 22.5346 37.9852 22.7175L37.6487 23.3498L38.2982 23.6953C38.4612 23.782 38.5285 23.9798 38.4614 24.1535L38.4418 24.1964C38.3446 24.3793 38.1227 24.4514 37.9461 24.3576L37.2967 24.0118L36.9289 24.7041C36.8392 24.8729 36.6432 24.9473 36.4747 24.884L36.4332 24.8652C36.2567 24.7714 36.1924 24.5471 36.2897 24.3642L36.6576 23.672L35.9366 23.289C35.7736 23.2024 35.7063 23.0046 35.7734 22.8308L35.793 22.788C35.8902 22.6051 36.1121 22.533 36.2887 22.6268L37.0096 23.01L37.346 22.3776C37.4357 22.2088 37.6317 22.1343 37.8002 22.1977L37.8417 22.2164Z" fill="#999999"></path>
+                            <path opacity="0.7" d="M48.288 15.7511C48.5316 15.9783 48.5384 16.3672 48.303 16.6196L47.4886 17.4928L48.385 18.3289C48.6135 18.542 48.6337 18.8971 48.4413 19.1486L48.4 19.1975C48.1646 19.45 47.7762 19.4704 47.5325 19.2431L46.6361 18.407L45.7455 19.3622C45.5248 19.5989 45.1696 19.6316 44.9253 19.4476L44.878 19.4078C44.6343 19.1806 44.6275 18.7917 44.863 18.5393L45.7535 17.5839L44.7583 16.6561C44.5298 16.443 44.5096 16.0879 44.702 15.8364L44.7433 15.7875C44.9787 15.5351 45.3671 15.5146 45.6108 15.7419L46.606 16.6697L47.4205 15.7967C47.6412 15.56 47.9963 15.5273 48.2406 15.7114L48.288 15.7511Z" fill="#999999"></path>
+                        </svg>
+                    </div>
+                </div>
+
+                <p class="text-muted mb-4">Votre panier est vide.</p>
+                <a asp-controller="Livres" asp-action="Affichage" class="btn btn-outline-dark rounded-pill px-4 mb-4">Parcourir les livres</a>
+
+                <div class="trust-badges-wrapper">
+                    <div class="trust-item">
+                        <img src="https://aimg.kwcdn.com/upload_aimg/temu/044bc6f4-c0d3-4d82-aa12-ca1ea0089ead.png.slim.png?imageView2/2/w/800/q/70/format/webp" class="trust-icon" alt="Paiement Sécurisé" />
+                        <span class="trust-text">Paiement Sécurisé</span>
+                    </div>
+                    <div class="trust-item">
+                        <img src="https://aimg.kwcdn.com/upload_aimg/temu/5ca28ce8-6913-4647-ab74-17b4e8a2977f.png.slim.png?imageView2/2/w/800/q/70/format/webp" class="trust-icon" alt="Données Protégées" />
+                        <span class="trust-text">Protection des données</span>
+                    </div>
+                    <div class="trust-item">
+                        <img src="https://aimg.kwcdn.com/upload_aimg/temu/9801ecbd-bdef-48e6-9a24-0a41d0340898.png?imageView2/2/w/800/q/70/format/webp" class="trust-icon" alt="Garantie Readify" />
+                        <span class="trust-text">Garantie Readify</span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+@section Scripts {
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.js-qty').click(function () {
+                var id = $(this).data('id');
+                var change = $(this).data('change');
+
+                $.post('/Panier/UpdateQuantiteAjax', { id: id, changement: change }, function (data) {
+                    if (data.success) {
+                        if (data.nouvelleQty <= 0) {
+                            $('#row-' + id).fadeOut();
+                        } else {
+                            $('#qty-' + id).text(data.nouvelleQty);
+                            $('#sub-' + id).text(data.nouveauSousTotal);
+                        }
+                        $('#total-gen').text(data.nouveauTotalGeneral);
+
+                        // Petit rechargement pour mettre à jour la logique "Panier Vide" si on enlève tout
+                        if (data.nouvelleQty <= 0 && data.nouveauTotalGeneral == "0.00") {
+                            location.reload();
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+}

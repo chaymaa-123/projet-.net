@@ -1,0 +1,68 @@
+﻿@model Readify.Models.Livre
+
+@{
+    ViewData["Title"] = "Créer un Livre";
+}
+
+<h1>Créer un nouveau livre</h1>
+<hr />
+<div class="row">
+    <div class="col-md-6">
+        <form asp-action="Create" enctype="multipart/form-data">
+
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Titre" class="control-label"></label>
+                <input asp-for="Titre" class="form-control" />
+                <span asp-validation-for="Titre" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Resume" class="control-label"></label>
+                <textarea asp-for="Resume" class="form-control"></textarea>
+                <span asp-validation-for="Resume" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="Prix" class="control-label"></label>
+                <input asp-for="Prix" type="number" step="0.01" class="form-control" />
+                <span asp-validation-for="Prix" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="DatePublication" class="control-label"></label>
+                <input asp-for="DatePublication" type="date" class="form-control" />
+                <span asp-validation-for="DatePublication" class="text-danger"></span>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="ImageFile" class="control-label"></label>
+                <input asp-for="ImageFile" type="file" class="form-control" accept="image/*" />
+                <span asp-validation-for="ImageFile" class="text-danger"></span>
+            </div>
+
+            <div class="form-group form-check mb-3">
+                <label class="form-check-label">
+                    <input class="form-check-input" asp-for="EstPubliee" /> @Html.DisplayNameFor(model => model.EstPubliee)
+                </label>
+            </div>
+
+            <div class="form-group mb-3">
+                <label asp-for="GenreID" class="control-label">Genre</label>
+                <select asp-for="GenreID" class="form-control" asp-items="ViewBag.GenreID"></select>
+            </div>
+
+            <div class="form-group">
+                <input type="submit" value="Créer le livre" class="btn btn-primary" />
+                <a asp-action="Affichage" class="btn btn-secondary">Retour</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

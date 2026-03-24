@@ -1,0 +1,158 @@
+﻿@model IEnumerable<Readify.Models.Livre>
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Gestion Bibliothèque";
+}
+
+<div>
+    <header class="flex justify-between items-center mb-10">
+        <h1 class="text-3xl font-extrabold text-gray-900">Gestion Bibliothèque</h1>
+        <button onclick="openAddModal()" class="bg-blue-600 text-white px-5 py-2.5 rounded-xl font-bold shadow-lg">Nouveau Livre</button>
+    </header>
+
+    @* Cartes Stats *@
+    <div class="grid grid-cols-2 gap-6 mb-10">
+        <div class="bg-white p-6 rounded-3xl shadow-sm border flex items-center gap-4">
+            <div class="text-blue-600 text-2xl"><i class="fas fa-book"></i></div>
+            <div><p class="text-sm text-gray-500">Total Livres</p><p class="text-xl font-bold">@ViewBag.TotalLivres</p></div>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border flex items-center gap-4">
+            <div class="text-green-600 text-2xl"><i class="fas fa-tag"></i></div>
+            <div><p class="text-sm text-gray-500">Prix Moyen</p><p class="text-xl font-bold">@ViewBag.PrixMoyen.ToString("N2") DHS</p></div>
+        </div>
+    </div>
+
+    @* Tableau *@
+    <div class="bg-white rounded-2xl shadow-sm border overflow-hidden">
+        <table class="w-full text-left">
+            <thead class="bg-gray-50 border-b">
+                <tr>
+                    <th class="px-6 py-4 uppercase text-xs font-bold text-gray-500">Couverture</th>
+                    <th class="px-6 py-4 uppercase text-xs font-bold text-gray-500">Détails</th>
+                    <th class="px-6 py-4 uppercase text-xs font-bold text-gray-500">Prix</th>
+                    <th class="px-6 py-4 uppercase text-xs font-bold text-gray-500 text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="border-b hover:bg-gray-50">
+                        <td class="px-6 py-4">
+                            <img src="/img/@(string.IsNullOrEmpty(item.ImageUrl) ? "no-cover.png" : item.ImageUrl)" class="w-12 h-16 object-cover rounded shadow" />
+                        </td>
+                        <td class="px-6 py-4">
+                            <p class="font-bold">@item.Titre</p>
+                            <span class="text-xs bg-blue-100 text-blue-600 px-2 py-1 rounded">@item.Genre?.NomGenre</span>
+                        </td>
+                        <td class="px-6 py-4 font-bold text-blue-600">@item.Prix.ToString("N2") DHS</td>
+                        <td class="px-6 py-4 text-center">
+                            @* MODIFICATION ICI : On appelle le JavaScript avec toutes les données *@
+                            <button onclick="openEditModal('@item.LivreId', '@Html.Raw(item.Titre.Replace("'", "\\'"))', '@item.Prix.ToString().Replace(",",".")', '@item.GenreID', '@Html.Raw(item.Resume?.Replace("'", "\\'"))', '@item.ImageUrl')" class="text-blue-500 mr-3">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <button onclick="confirmDelete(@item.LivreId)" class="text-red-500">
+                                <i class="fas fa-trash"></i>
+                            </button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* MODAL UNIQUE (AJOUT & MODIF) *@
+<div id="modalContainer" class="fixed inset-0 bg-gray-900/60 z-50 hidden flex items-center justify-center p-4">
+    <div class="bg-white rounded-3xl w-full max-w-xl overflow-hidden shadow-2xl">
+        <div class="bg-blue-600 p-6 text-white flex justify-between">
+            <h2 id="modalTitle" class="text-xl font-bold text-white">Livre</h2>
+            <button onclick="closeModal()" class="text-2xl font-bold">&times;</button>
+        </div>
+
+        <form asp-action="Upsert" method="post" enctype="multipart/form-data" class="p-8 space-y-4">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="LivreId" id="inputLivreId" />
+            <input type="hidden" name="ImageUrl" id="inputImageUrl" />
+
+            <div>
+                <label class="block text-xs font-bold text-gray-500 uppercase">Titre</label>
+                <input name="Titre" id="inputTitre" class="w-full border-2 rounded-xl p-3 outline-none focus:border-blue-500" required />
+            </div>
+
+            <div class="grid grid-cols-2 gap-4">
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase">Prix</label>
+                    <input name="Prix" id="inputPrix" type="number" step="0.01" class="w-full border-2 rounded-xl p-3 outline-none focus:border-blue-500" required />
+                </div>
+                <div>
+                    <label class="block text-xs font-bold text-gray-500 uppercase">Genre</label>
+                    <select name="GenreID" id="inputGenre" asp-items="ViewBag.GenreID" class="w-full border-2 rounded-xl p-3 bg-white"></select>
+                </div>
+            </div>
+
+            <div>
+                <label class="block text-xs font-bold text-gray-500 uppercase">Résumé</label>
+                <textarea name="Resume" id="inputResume" rows="3" class="w-full border-2 rounded-xl p-3 outline-none focus:border-blue-500"></textarea>
+            </div>
+
+            <div class="bg-gray-100 p-4 rounded-xl flex items-center gap-4">
+                <img id="imgPreview" class="w-12 h-16 object-cover rounded hidden" />
+                <input type="file" name="ImageFile" class="text-xs" />
+            </div>
+
+            <div class="flex justify-end gap-3 pt-4 border-t">
+                <button type="button" onclick="closeModal()" class="px-6 py-2 text-gray-400 font-bold">Annuler</button>
+                <button type="submit" class="bg-blue-600 text-white font-bold px-10 py-3 rounded-xl shadow-lg">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+<form id="deleteForm" asp-action="Delete" method="post">
+    @Html.AntiForgeryToken()
+    <input type="hidden" name="id" id="deleteId" />
+</form>
+
+<script>
+    const modal = document.getElementById('modalContainer');
+
+    function openAddModal() {
+        document.getElementById('inputLivreId').value = "0";
+        document.getElementById('inputImageUrl').value = "";
+        document.getElementById('inputTitre').value = "";
+        document.getElementById('inputPrix').value = "";
+        document.getElementById('inputGenre').selectedIndex = 0;
+        document.getElementById('inputResume').value = "";
+        document.getElementById('modalTitle').innerText = "Nouveau Livre";
+        document.getElementById('imgPreview').classList.add('hidden');
+        modal.classList.remove('hidden');
+    }
+
+    function openEditModal(id, titre, prix, genreId, resume, imageUrl) {
+        document.getElementById('inputLivreId').value = id;
+        document.getElementById('inputTitre').value = titre;
+        document.getElementById('inputPrix').value = prix;
+        document.getElementById('inputGenre').value = genreId;
+        document.getElementById('inputResume').value = resume;
+        document.getElementById('inputImageUrl').value = imageUrl;
+
+        document.getElementById('modalTitle').innerText = "Modifier : " + titre;
+
+        if (imageUrl && imageUrl !== "") {
+            document.getElementById('imgPreview').src = "/img/" + imageUrl;
+            document.getElementById('imgPreview').classList.remove('hidden');
+        } else {
+            document.getElementById('imgPreview').classList.add('hidden');
+        }
+        modal.classList.remove('hidden');
+    }
+
+    function closeModal() { modal.classList.add('hidden'); }
+
+    function confirmDelete(id) {
+        if (confirm("Supprimer ce livre ?")) {
+            document.getElementById('deleteId').value = id;
+            document.getElementById('deleteForm').submit();
+        }
+    }
+</script>

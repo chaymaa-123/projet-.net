@@ -1,0 +1,762 @@
+﻿@{
+    ViewData["Title"] = "Accueil";
+}
+
+<!-- ====== CAROUSEL PRINCIPAL ====== -->
+
+<div id="carouselExampleIndicators" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+    <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+                aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+                aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+                aria-label="Slide 3"></button>
+        <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3"
+                aria-label="Slide 4"></button>
+    </div>
+
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <!-- J'utilise vos chemins .NET originaux -->
+            <img src="~/img/r.jpg" class="d-block w-100" alt="First slide">
+        </div>
+        <div class="carousel-item">
+            <img src="~/img/mauve.jpg" class="d-block w-100" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+            <img src="~/img/bleu.jpg" class="d-block w-100" alt="Third slide">
+        </div>
+        <div class="carousel-item">
+            <img src="~/img/green.jpg" class="d-block w-100" alt="Third slide">
+        </div>
+    </div>
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Précédent</span>
+    </button>
+
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators"
+            data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Suivant</span>
+    </button>
+</div>
+
+<!-- ====== SECTION READIFY ====== -->
+<div class="btn-container">
+    <button class="btn-primary">Commencer</button>
+    <button class="btn-link">Vous avez un compte ? Ouvrir une session</button>
+</div>
+
+<!-- ====== LIENS DES STORES ====== -->
+<div class="store-links">
+    <!-- App Store -->
+    <a href="https://apps.apple.com/app/id1167487138" target="_blank" rel="noreferrer">
+        <img src="https://developer.apple.com/assets/elements/badges/download-on-the-app-store.svg"
+             alt="App Store"
+             height="48" />
+    </a>
+
+    <!-- Google Play -->
+    <a href="https://my.w.tt/ngdWYy82J5" data-gtm="Download|getmobile|Android" target="_blank" rel="noreferrer">
+        <img src="    https://www.wattpad.com/wp-web-assets/images/get-mobile/google-play/en.png" width="170" height="70" alt="Google Play">
+    </a>
+</div>
+
+<!-- ====== SECTION : TENDANCES ACTUELLES ====== -->
+<section class="mt-5 mb-5 text-center">
+    <h3 class="mb-4">Tendances actuelles</h3>
+
+    <div class="container">
+        <div class="row justify-content-center g-3">
+            <!-- ===== HISTOIRES ===== -->
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="https://www.wattpad.com/story/270299693">
+                    <img src="https://img.wattpad.com/cover/270299693-256-k424820.jpg"
+                         class="img-fluid rounded shadow-sm" alt="Promis, cette fois je t'envoie en prison !">
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="https://www.wattpad.com/story/200884909">
+                    <img src="https://img.wattpad.com/cover/200884909-256-k534540.jpg"
+                         class="img-fluid rounded shadow-sm" alt="Cendres de Lune">
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="https://www.wattpad.com/story/106787611">
+                    <img src="https://img.wattpad.com/cover/106787611-256-k78854.jpg"
+                         class="img-fluid rounded shadow-sm" alt="En Eaux profondes">
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="https://www.wattpad.com/story/215787716">
+                    <img src="https://img.wattpad.com/cover/215787716-256-k692988.jpg"
+                         class="img-fluid rounded shadow-sm" alt="Forever Yours">
+                </a>
+            </div>
+
+            <!-- ===== NOUVELLES HISTOIRES ===== -->
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="https://www.wattpad.com/story/210094643">
+                    <img src="https://img.wattpad.com/cover/210094643-256-k630831.jpg"
+                         class="img-fluid rounded shadow-sm" alt="Près de moi">
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="https://www.wattpad.com/story/198912880">
+                    <img src="https://img.wattpad.com/cover/198912880-256-k436947.jpg"
+                         class="img-fluid rounded shadow-sm" alt="La Noblesse du Cœur">
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="https://www.wattpad.com/story/92674823">
+                    <img src="https://img.wattpad.com/cover/92674823-256-k437907.jpg"
+                         class="img-fluid rounded shadow-sm" alt="Petit ami et Compagnie - Partie 1">
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="https://www.wattpad.com/story/241792868">
+                    <img src="https://img.wattpad.com/cover/241792868-256-k224555.jpg"
+                         class="img-fluid rounded shadow-sm" alt="Le Jeu des Roses | Tome 1">
+                </a>
+            </div>
+            <div class="col-6 col-sm-4 col-md-3 col-lg-2">
+                <a href="https://www.wattpad.com/story/219447523">
+                    <img src="https://img.wattpad.com/cover/219447523-256-k643431.jpg"
+                         class="img-fluid rounded shadow-sm" alt="El Príncipe Ideal">
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ====== SECTION : LIRE. ADMIRER. SE PASSIONNER. ====== -->
+<section class="container my-5">
+    <header class="text-center mb-4">
+        <h3 class="fw-bold">Lire. Admirer. Se passionner.</h3>
+    </header>
+
+    <!-- ====== CAROUSEL ====== -->
+    <div id="bookCarousel" class="carousel slide" data-bs-ride="carousel" data-bs-interval="3000">
+        <div class="carousel-inner">
+
+            <!-- ====== SLIDE 1 ====== -->
+            <div class="carousel-item active">
+                <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <a href="https://www.wattpad.com/story/5949534" target="_blank">
+                        <img src="https://img.wattpad.com/cover/5949534-256-k579768.jpg" class="rounded shadow" alt="Light as a Feather, Stiff as a Board" width="200">
+                    </a>
+                    <a href="https://www.wattpad.com/story/21530897" target="_blank">
+                        <img src="https://img.wattpad.com/cover/21530897-256-k441529.jpg" class="rounded shadow" alt="Boot Camp" width="200">
+                    </a>
+                    <a href="https://www.wattpad.com/story/301534635" target="_blank">
+                        <img src="https://img.wattpad.com/cover/301534635-256-k43518.jpg" class="rounded shadow" alt="Pour le cœur d’un tigre" width="200">
+                    </a>
+                </div>
+            </div>
+
+            <!-- ====== SLIDE 2 ====== -->
+            <div class="carousel-item">
+                <div class="d-flex justify-content-center flex-wrap gap-3">
+                    <a href="https://www.wattpad.com/story/282674526" target="_blank">
+                        <img src="https://img.wattpad.com/cover/282674526-256-k540822.jpg" class="rounded shadow" alt="Océan [éditée chez Slalom Romance]" width="200">
+                    </a>
+                    <a href="https://www.wattpad.com/story/67273075" target="_blank">
+                        <img src="https://img.wattpad.com/cover/67273075-256-k892856.jpg" class="rounded shadow" alt="Le Coloc" width="200">
+                    </a>
+                    <a href="https://www.wattpad.com/story/305666152" target="_blank">
+                        <img src="https://img.wattpad.com/cover/305666152-256-k186967.jpg" class="rounded shadow" alt="La théorie des cœurs bunkers" width="200">
+                    </a>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+        <!-- ====== CONTROLS ====== -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#bookCarousel" data-bs-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#bookCarousel" data-bs-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </button>
+
+    </div>
+</section>
+
+<h3 class="fw-bold text-center">Tous les genres. Tous les archétypes. Tous à vous.</h3>
+<div class="container-categories">
+    <a href="https://www.wattpad.com/stories/roman-damour" class="card">
+        <img src="https://static.wattpad.com/image/romance-illo@120x120.png" alt="">
+        <span>Roman d'amour</span>
+    </a>
+
+    <a href="https://www.wattpad.com/stories/aléatoire" class="card">
+        <img src="https://static.wattpad.com/image/random-illo@120x120.png" alt="">
+        <span>Aléatoire</span>
+    </a>
+
+    <a href="https://www.wattpad.com/stories/fanfiction" class="card">
+        <img src="https://static.wattpad.com/image/fanfic-illo@120x120.png" alt="">
+        <span>Fanfiction</span>
+    </a>
+
+    <a href="https://www.wattpad.com/stories/action" class="card">
+        <img src="https://static.wattpad.com/image/action-illo@120x120.png" alt="">
+        <span>Action</span>
+    </a>
+
+    <a href="https://www.wattpad.com/stories/fiction-générale" class="card">
+        <img src="https://static.wattpad.com/image/urban-illo@120x120.png" alt="">
+        <span>Fiction générale</span>
+    </a>
+
+    <a href="https://www.wattpad.com/stories/aventure" class="card">
+        <img src="https://static.wattpad.com/image/adventure-illo@120x120.png" alt="">
+        <span>Aventure</span>
+    </a>
+
+    <a href="https://www.wattpad.com/stories/romanpouradolescents" class="card">
+        <img src="https://static.wattpad.com/image/teenfic-illo@120x120.png" alt="">
+        <span>Roman pour adolescents</span>
+    </a>
+
+    <a href="https://www.wattpad.com/stories/nouvelles" class="card">
+        <img src="https://static.wattpad.com/image/shortstory-illo@120x120.png" alt="">
+        <span>Nouvelles</span>
+    </a>
+</div>
+
+
+<h3 class="fw-bold  text-center">A propos de nous.</h3>
+<br />
+
+<div style="display: flex; justify-content: center; gap: 20px; flex-wrap: nowrap;">
+
+    <div class="card" style="width: 20rem; background-color: #ffe6f1; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <img class="card-img-top" src="https://images.pexels.com/photos/696317/pexels-photo-696317.jpeg?auto=compress&cs=tinysrgb&h=300" alt="Personne utilisant une plateforme Readify" style="width: 100%; height: 220px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+        <div class="card-body" style="text-align:center; padding:15px;">
+            <p class="card-text" style="color:#4a4a4a; font-size:15px;">
+                Découvrez *Readify*, une plateforme intuitive et moderne qui rend la lecture agréable et facile, avec une interface simple et conviviale.
+            </p>
+        </div>
+    </div>
+
+    <div class="card" style="width: 20rem; background-color: #ffe6f1; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <img class="card-img-top" src="https://images.pexels.com/photos/16431787/pexels-photo-16431787.jpeg?auto=compress&cs=tinysrgb&h=300" alt="Lecture dans un restaurant/café" style="width: 100%; height: 220px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+        <div class="card-body" style="text-align:center; padding:15px;">
+            <p class="card-text" style="color:#4a4a4a; font-size:15px;">
+                Avec *Readify*, lisez quand vous voulez et où vous voulez. Dans un restaurant cosy ou un café ambiance, vos histoires préférées vous accompagnent partout.
+            </p>
+        </div>
+    </div>
+
+
+
+    <div class="card" style="width: 20rem; background-color: #ffe6f1; border-radius: 15px; box-shadow: 0 4px 10px rgba(0,0,0,0.1);">
+        <img class="card-img-top" src="https://images.pexels.com/photos/159711/books-bookstore-book-reading-159711.jpeg?auto=compress&cs=tinysrgb&h=300" alt="Bibliothèque et livres" style="width: 100%; height: 220px; object-fit: cover; border-top-left-radius: 15px; border-top-right-radius: 15px;">
+        <div class="card-body" style="text-align:center; padding:15px;">
+            <p class="card-text" style="color:#4a4a4a; font-size:15px;">
+                Profitez de plus de *300 histoires variées* sur Readify. Du fantastique à la romance, en passant par le suspense et les récits réalistes, il y en a pour tous les goûts.
+            </p>
+        </div>
+    </div>
+
+</div>
+
+
+<!-- ====== EMOJI CHATBOT ====== -->
+<div id="chatbot-icon">💬</div>
+
+<!-- Fenêtre du chatbot -->
+<div id="chatbot-box">
+    <div class="chat-header">Chatbot 🤖</div>
+    <div class="chat-body">
+        <p><b>Bot :</b> Salut 👋 Comment puis-je t’aider ?</p>
+    </div>
+    <div class="chat-input">
+        <input type="text" id="userInput" placeholder="Écris un message..." />
+        <button onclick="sendMessage()">Envoyer</button>
+    </div>
+</div>
+
+<!-- ====== STYLE ====== -->
+<style>
+    /* ===== CAROUSEL STYLING ===== */
+
+    #carouselExampleIndicators {
+        max-width: 95%; /* Mettez 100% si vous voulez qu'il touche les bords */
+        margin: 0 auto;
+        position: relative;
+        overflow: hidden;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        /* C'est ici que vous réglez la hauteur */
+        height: 80vh; /* '80vh' = 80% de la hauteur de l'écran. Ajustez si besoin. */
+    }
+
+        #carouselExampleIndicators .carousel-inner {
+            border-radius: 15px;
+            overflow: hidden;
+            height: 100%; /* Ajouté : pour remplir le conteneur parent */
+        }
+
+        #carouselExampleIndicators .carousel-item {
+            transition: transform 0.8s ease, opacity 0.8s ease;
+            backface-visibility: hidden;
+            position: relative;
+            height: 100%; /* Ajouté : pour remplir le conteneur parent */
+        }
+
+        #carouselExampleIndicators img {
+            width: 100%;
+            height: 100%;
+            border-radius: 15px;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            filter: brightness(0.85);
+            /* LE CHANGEMENT LE PLUS IMPORTANT :
+                      'cover' remplit le cadre et coupe ce qui dépasse.
+                      'contain' (votre ancien code) crée les "cadres" vides.
+                    */
+            object-fit: cover;
+        }
+
+            #carouselExampleIndicators img:hover {
+                transform: scale(1.05) rotate(0.5deg);
+                filter: brightness(1);
+            }
+
+    /* ===== TEXTE SUR IMAGE ===== */
+    .carousel-caption {
+        position: absolute;
+        bottom: 20px;
+        left: 20px;
+        right: 20px;
+        background: rgba(0,0,0,0.5); /* overlay semi-transparent */
+        color: #fff;
+        padding: 15px 20px;
+        border-radius: 10px;
+        font-size: 1.3rem; /* texte plus grand */
+        font-weight: 700;
+        text-align: left;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+    }
+
+    /* ===== CONTRÔLES ===== */
+    #carouselExampleIndicators .carousel-control-prev,
+    #carouselExampleIndicators .carousel-control-next {
+        width: 60px;
+        height: 60px;
+        background-color: rgba(0,0,0,0.5);
+        border-radius: 50%;
+        top: 50%;
+        transform: translateY(-50%);
+        transition: all 0.3s ease;
+    }
+
+        #carouselExampleIndicators .carousel-control-prev:hover,
+        #carouselExampleIndicators .carousel-control-next:hover {
+            background-color: #ff4da6;
+        }
+
+    #carouselExampleIndicators .carousel-control-prev-icon,
+    #carouselExampleIndicators .carousel-control-next-icon {
+        filter: invert(1);
+    }
+
+    /* ===== INDICATORS ===== */
+    #carouselExampleIndicators .carousel-indicators button {
+        background-color: rgba(255,255,255,0.5);
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        transition: all 0.3s ease;
+    }
+
+    #carouselExampleIndicators .carousel-indicators .active {
+        background-color: #ff4da6;
+        width: 14px;
+        height: 14px;
+    }
+
+    .img-fluid {
+        max-height: 150px;
+        transition: transform 0.3s ease;
+    }
+
+        .img-fluid:hover {
+            transform: scale(1.05);
+        }
+
+    h3 {
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    /* ==== FANFICTION CAROUSEL ==== */
+    .carousel-section {
+        text-align: center;
+        margin-top: 40px;
+        position: relative;
+    }
+
+        .carousel-section h3 {
+            margin-bottom: 20px;
+        }
+
+    .fanfiction-carousel {
+        position: relative;
+        width: 90%;
+        max-width: 800px;
+        margin: 0 auto;
+        overflow: hidden;
+    }
+
+    .fanfiction-track {
+        display: flex;
+        transition: transform 0.8s ease-in-out;
+    }
+
+    .fanfiction-slide {
+        min-width: 100%;
+    }
+
+        .fanfiction-slide img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+    .fanfiction-prev,
+    .fanfiction-next {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: rgba(0,0,0,0.5);
+        color: white;
+        border: none;
+        padding: 10px 15px;
+        cursor: pointer;
+        border-radius: 50%;
+    }
+
+    .fanfiction-prev {
+        left: 10px;
+    }
+
+    .fanfiction-next {
+        right: 10px;
+    }
+
+        .fanfiction-prev:hover,
+        .fanfiction-next:hover {
+            background-color: rgba(0,0,0,0.7);
+        }
+
+    .btn-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 40px;
+    }
+
+    .btn-primary {
+        background-color: #ffe6f1;
+        color: black;
+        border: none;
+        border-radius: 25px;
+        padding: 12px 30px;
+        font-size: 16px;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        width: 220px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    }
+
+        .btn-primary:hover {
+            background-color: #90ee90;
+            transform: scale(1.03);
+        }
+
+    .btn-link {
+        background: none;
+        border: none;
+        color: black;
+        font-size: 15px;
+        text-decoration: underline;
+        cursor: pointer;
+        transition: color 0.3s ease;
+    }
+
+        .btn-link:hover {
+            color: #90ee90;
+        }
+
+    .store-links {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 25px;
+        margin-top: 30px;
+    }
+
+        .store-links img {
+            transition: all 0.3s ease;
+        }
+
+            .store-links img:hover {
+                transform: scale(1.05);
+                filter: brightness(1.1);
+            }
+
+    /* ======= CHATBOT ======= */
+    #chatbot-icon {
+        position: fixed;
+        bottom: 20px;
+        right: 25px;
+        font-size: 2.5rem;
+        cursor: pointer;
+        background-color: #ff4081;
+        color: white;
+        border-radius: 50%;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        z-index: 1000;
+        transition: transform 0.3s ease;
+    }
+
+        #chatbot-icon:hover {
+            transform: scale(1.1);
+        }
+
+    #chatbot-box {
+        position: fixed;
+        bottom: 90px;
+        right: 25px;
+        width: 320px;
+        height: 400px;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        display: none;
+        flex-direction: column;
+        overflow: hidden;
+        z-index: 1000;
+        animation: fadeIn 0.3s ease;
+    }
+
+    .chat-header {
+        background-color: #ff4081;
+        color: white;
+        padding: 12px;
+        text-align: center;
+        font-weight: bold;
+    }
+
+    .chat-body {
+        flex: 1;
+        padding: 10px;
+        overflow-y: auto;
+        font-size: 14px;
+    }
+
+    .chat-input {
+        display: flex;
+        border-top: 1px solid #ddd;
+    }
+
+        .chat-input input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            outline: none;
+        }
+
+        .chat-input button {
+            background-color: #ffe6f1;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+        }
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @@media (max-width: 600px) {
+        .btn-primary {
+            width: 180px;
+            font-size: 14px;
+        }
+
+        .store-links {
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        #chatbot-box {
+            width: 90%;
+            right: 5%;
+        }
+    }
+
+    .container-categories {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+        max-width: 800px;
+        margin: 50px auto;
+    }
+
+    .card {
+        background-color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+        border-radius: 15px;
+        padding: 15px 20px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+        text-decoration: none;
+        transition: all 0.3s ease;
+    }
+
+        .card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .card span {
+            color: #000;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+    @@media (max-width: 600px) {
+        .container-categories {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    #bookCarousel img {
+        transition: transform 0.3s ease;
+    }
+
+        #bookCarousel img:hover {
+            transform: scale(1.05);
+        }
+</style>
+
+
+
+<!-- ===== JS AUTO SLIDE (7s) ===== -->
+<script>
+    const track = document.querySelector('.fanfiction-track');
+    const slides = track ? Array.from(track.children) : [];
+    const nextButton = document.querySelector('.fanfiction-next');
+    const prevButton = document.querySelector('.fanfiction-prev');
+    let index = 0;
+
+    function updateCarousel() {
+        if (track) {
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+    }
+
+    function nextSlide() {
+        if (slides.length > 0) {
+            index = (index + 1) % slides.length;
+            updateCarousel();
+        }
+    }
+
+    function prevSlide() {
+        if (slides.length > 0) {
+            index = (index - 1 + slides.length) % slides.length;
+            updateCarousel();
+        }
+    }
+
+    if (nextButton && prevButton) {
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+    }
+
+    // Auto défilement toutes les 7 secondes
+    setInterval(nextSlide, 7000);
+
+    const icon = document.getElementById('chatbot-icon');
+    const box = document.getElementById('chatbot-box');
+
+    if (icon && box) {
+        icon.addEventListener('click', () => {
+            const isVisible = box.style.display === 'flex';
+            box.style.display = isVisible ? 'none' : 'flex';
+        });
+    }
+
+    async function sendMessage() {
+        const input = document.getElementById('userInput');
+        const message = input.value.trim();
+        const chatBody = document.querySelector('.chat-body');
+
+        if (message === "") return;
+
+        chatBody.innerHTML += `<p><b>Toi :</b> ${message}</p>`;
+        input.value = "";
+        chatBody.scrollTop = chatBody.scrollHeight;
+
+        try {
+            const response = await fetch('/api/chat/send', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ message })
+            });
+
+            if (!response.ok) {
+                throw new Error(`Erreur HTTP: ${response.status}`);
+            }
+
+            const data = await response.json();
+            const reply = data.reply || "Désolé, je n’ai pas compris 😅";
+            chatBody.innerHTML += `<p><b>Bot :</b> ${reply}</p>`;
+            chatBody.scrollTop = chatBody.scrollHeight;
+        } catch (err) {
+            console.error('Erreur lors de l’appel API:', err);
+            chatBody.innerHTML += `<p><b>Bot :</b> Erreur de connexion au service ❌</p>`;
+        }
+    }
+
+    // Envoi avec la touche "Entrée"
+    document.getElementById('userInput').addEventListener('keypress', function (e) {
+        if (e.key === 'Enter') {
+            sendMessage();
+        }
+    });
+</script>

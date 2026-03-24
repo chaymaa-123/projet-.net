@@ -1,0 +1,370 @@
+﻿@using Microsoft.EntityFrameworkCore
+@inject Readify.Models.ApplicationDbContext _context
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Readify </title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/WebApplication1.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+</head>
+
+@{
+    // Récupération des genres
+    var tousLesGenres = await _context.Genres.ToListAsync();
+
+    // Récupération du panier avec les livres et calcul des quantités
+    var articlesPanier = await _context.Paniers.Include(p => p.Livre).ToListAsync();
+
+    // Calcul du nombre total d'articles pour le badge
+    var nombreTotalArticles = articlesPanier.Sum(p => p.Quantite);
+
+    // Calcul du prix total
+    decimal totalGeneral = articlesPanier.Sum(p => p.Quantite * p.Livre.Prix);
+}
+
+<body style="background-color:#ffe6f1">
+    <header>
+        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-color:#ffe6f1">
+            <div class="container-fluid">
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/img/logo_.net.png" alt="Readify Logo" width="120" height="auto" class="d-inline-block align-text-top" />
+                </a>
+
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
+                        </li>
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownGenres" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                Parcourir
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdownGenres">
+                                <li><a class="dropdown-item fw-bold" asp-controller="Livres" asp-action="Affichage">Tous les genres</a></li>
+                                <li><hr class="dropdown-divider"></li>
+                                @foreach (var g in tousLesGenres)
+                                {
+                                    <li><a class="dropdown-item" asp-controller="Livres" asp-action="Affichage" asp-route-genreId="@g.GenreID">@g.NomGenre</a></li>
+                                }
+                            </ul>
+                        </li>
+                    </ul>
+
+                    <form class="d-flex position-relative" role="search" asp-controller="Livres" asp-action="Affichage" method="get">
+                        <input name="searchString" class="form-control me-2 search-input" type="search" placeholder="Search" />
+                        <span class="search-bubble"></span>
+                        <button class="btn custom-btn" type="submit">Search</button>
+                    </form>
+
+                    <div class="panier-container position-relative">
+                        <a href="#" id="panier-icon-trigger" class="cart-icon ms-4">
+                            🛒
+                            @* AJOUT DU BADGE DE QUANTITÉ TOTALE *@
+                            @if (nombreTotalArticles > 0)
+                            {
+                                <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger" style="font-size: 0.65rem;">
+                                    @nombreTotalArticles
+                                </span>
+                            }
+                        </a>
+
+                        <div id="panier-box">
+                            <div class="panier-header">
+                                <h5>Votre Panier (@nombreTotalArticles)</h5>
+                                <button id="panier-close-btn">×</button>
+                            </div>
+
+                            <div class="panier-body" id="panier-content">
+                                @if (articlesPanier.Any())
+                                {
+                                    @foreach (var item in articlesPanier)
+                                    {
+                                        <div class="d-flex align-items-center mb-3 pb-2 border-bottom">
+                                            <img src="/img/@(item.Livre.ImageUrl ?? "default.jpg")" style="width: 40px; height: 60px; object-fit: cover; border-radius: 5px; margin-right: 10px;" />
+                                            <div style="flex-grow: 1;">
+                                                <h6 class="mb-0" style="font-size: 0.85rem; font-weight: bold;">@item.Livre.Titre</h6>
+                                                @* AFFICHAGE DE LA QUANTITÉ PAR ARTICLE *@
+                                                <small>Qté: <strong>@item.Quantite</strong> — @((item.Livre.Prix * item.Quantite).ToString("N2")) DHS</small>
+                                            </div>
+                                            <form asp-controller="Panier" asp-action="Supprimer" asp-route-id="@item.Id" method="post">
+                                                <button type="submit" class="border-0 bg-transparent text-danger">×</button>
+                                            </form>
+                                        </div>
+                                    }
+                                    <div class="text-end fw-bold">Total: @totalGeneral.ToString("N2") DHS</div>
+                                }
+                                else
+                                {
+                                    <p style="text-align:center;opacity:0.6">Panier vide…</p>
+                                }
+                            </div>
+
+                            <div class="panier-actions">
+                                <form asp-controller="Panier" asp-action="Vider" method="post">
+                                    <button type="submit" class="btn btn-clear">Vider</button>
+                                </form>
+                                <a asp-action="Index" asp-controller="Panier" class="btn btn-buy">Commander</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <style>
+                .search-input {
+                    width: 550px;
+                    border-radius: 25px;
+                    padding: 10px 15px;
+                    border: 2px solid #ffcfe8;
+                    background-color: #fff;
+                    transition: 0.3s ease;
+                }
+
+                    .search-input:focus {
+                        outline: none;
+                        border-color: #b7f0bb;
+                        box-shadow: 0 0 8px #b7f0bb;
+                    }
+
+                .search-bubble {
+                    width: 14px;
+                    height: 14px;
+                    background-color: #ffcfe8;
+                    border-radius: 50%;
+                    position: absolute;
+                    top: 8px;
+                    right: 115px;
+                }
+
+                .custom-btn {
+                    background-color: #ffe6f1;
+                    border: none;
+                    border-radius: 25px;
+                    padding: 10px 25px;
+                    transition: 0.3s ease;
+                    font-weight: 500;
+                }
+
+                    .custom-btn:hover {
+                        background-color: #b7f0bb;
+                        transform: translateY(-2px);
+                    }
+
+                .cart-icon {
+                    font-size: 28px;
+                    text-decoration: none;
+                    color: #000;
+                    padding: 8px 14px;
+                    background-color: #ffe6f1;
+                    border-radius: 50%;
+                    transition: 0.3s ease;
+                    display: inline-block;
+                }
+
+                    .cart-icon:hover {
+                        background-color: #b7f0bb;
+                        transform: translateY(-2px);
+                    }
+
+                #panier-box {
+                    position: absolute;
+                    top: 120%;
+                    right: 0;
+                    width: 380px;
+                    z-index: 1050;
+                    background-color: #fff;
+                    border-radius: 18px;
+                    box-shadow: 0 5px 20px rgba(0,0,0,0.15);
+                    border: 1px solid #ffcee8;
+                    opacity: 0;
+                    transform: translateY(-10px);
+                    visibility: hidden;
+                    transition: 0.25s ease-out;
+                }
+
+                    #panier-box.visible {
+                        opacity: 1;
+                        transform: translateY(0);
+                        visibility: visible;
+                    }
+
+                .panier-header {
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+                    padding: 1rem;
+                    background-color: #ffe6f1;
+                    border-top-left-radius: 18px;
+                    border-top-right-radius: 18px;
+                    border-bottom: 1px solid #ffcee8;
+                }
+
+                .panier-body {
+                    padding: 1.3rem;
+                    max-height: 300px;
+                    overflow-y: auto;
+                }
+
+                .panier-actions {
+                    display: flex;
+                    justify-content: space-between;
+                    padding: 1rem;
+                    border-top: 1px solid #eee;
+                }
+
+                .btn-clear {
+                    background: #ffdddd;
+                    border: none;
+                    padding: 5px 15px;
+                    border-radius: 20px;
+                }
+
+                .btn-buy {
+                    background: #c6ffc6;
+                    color: black;
+                    text-decoration: none;
+                    padding: 5px 15px;
+                    border-radius: 20px;
+                }
+            </style>
+        </nav>
+    </header>
+
+    <div class="container" style="background-color: white">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+    <footer class="border-top footer text-muted">
+        <footer class="readify-footer text-center">
+            <div class="container">
+
+                <!-- Logo -->
+                <div class="mb-3">
+                    <img src="~/img/logo_.net.png" alt="Readify Logo" class="footer-logo">
+                </div>
+
+                <!-- Titre et description -->
+
+                <p class="footer-desc">
+                    Votre plateforme pour découvrir, lire et écrire des histoires uniques.
+                </p>
+
+                <hr class="footer-separator">
+
+                <!-- Réseaux sociaux -->
+                <div class="footer-socials d-flex justify-content-center gap-3 mt-3">
+                    <a href="#" class="social-link d-flex align-items-center justify-content-center">
+                        <i class="bi bi-facebook"></i>
+                    </a>
+                    <a href="#" class="social-link d-flex align-items-center justify-content-center">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                    <a href="#" class="social-link d-flex align-items-center justify-content-center">
+                        <i class="bi bi-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link d-flex align-items-center justify-content-center">
+                        <i class="bi bi-youtube"></i>
+                    </a>
+                    <a href="#" class="social-link d-flex align-items-center justify-content-center">
+                        <i class="bi bi-tiktok"></i>
+                    </a>
+                </div>
+
+                <p class="footer-copy mt-4">
+                    ©️ 2025 Readify — Tous droits réservés.
+                </p>
+            </div>
+
+        </footer>
+
+        <style>
+            /* FOOTER READIFY */
+            .readify-footer {
+                background: #ffe6f1;
+                color: black;
+                padding: 50px 0;
+                border-top: 3px solid #ff4da6;
+            }
+
+            .footer-logo {
+                max-width: 150px;
+            }
+
+            /* Titres */
+            .readify-footer .footer-title {
+                font-size: 28px;
+                font-weight: 700;
+                color: #ff4da6;
+                margin-bottom: 15px;
+            }
+
+            .footer-desc {
+                opacity: 0.8;
+                font-size: 15px;
+            }
+
+            /* Séparateur */
+            .footer-separator {
+                border-color: rgba(255, 255, 255, 0.15);
+                margin: 25px 0;
+            }
+
+            /* Réseaux sociaux en cercle */
+            .footer-socials .social-link {
+                width: 50px;
+                height: 50px;
+                background-color: #1c1c1c;
+                color: #ffffff;
+                border-radius: 50%;
+                font-size: 1.25rem;
+                transition: 0.3s;
+            }
+
+                .footer-socials .social-link:hover {
+                    background-color: #ff4da6;
+                    color: #fff;
+                    transform: scale(1.2);
+                }
+
+            /* Copyright */
+            .footer-copy {
+                font-size: 14px;
+                opacity: 0.7;
+                margin-top: 20px;
+            }
+        </style>
+
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const icon = document.getElementById('panier-icon-trigger');
+            const box = document.getElementById('panier-box');
+            const closeBtn = document.getElementById('panier-close-btn');
+            if (icon && box) {
+                icon.addEventListener('click', (e) => {
+                    e.preventDefault(); e.stopPropagation();
+                    box.classList.toggle('visible');
+                });
+            }
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => { box.classList.remove('visible'); });
+            }
+            window.addEventListener('click', (e) => {
+                if (box && box.classList.contains('visible')) {
+                    if (!box.contains(e.target) && !icon.contains(e.target)) { box.classList.remove('visible'); }
+                }
+            });
+        });
+    </script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

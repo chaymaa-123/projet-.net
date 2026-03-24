@@ -1,0 +1,118 @@
+﻿@model IEnumerable<Readify.Models.Commande>
+@{
+    Layout = "_AdminLayout";
+}
+
+<div >
+    <header class="flex justify-between items-center mb-10">
+        <h1 class="text-3xl font-black text-gray-900">Suivi Ventes</h1>
+        <button onclick="openOrderModal()" class="bg-indigo-600 text-white px-6 py-3 rounded-2xl font-bold shadow-lg hover:bg-indigo-700 transition-all">
+            + Ajouter Commande
+        </button>
+    </header>
+
+    @* Tableau *@
+    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
+        <table class="w-full text-left">
+            <thead class="bg-gray-50 border-b">
+                <tr>
+                    <th class="px-6 py-5 text-xs font-bold text-gray-400 uppercase">ID</th>
+                    <th class="px-6 py-5 text-xs font-bold text-gray-400 uppercase">Client</th>
+                    <th class="px-6 py-5 text-xs font-bold text-gray-400 uppercase">Total</th>
+                    <th class="px-6 py-5 text-xs font-bold text-gray-400 uppercase">Statut</th>
+                    <th class="px-6 py-5 text-xs font-bold text-gray-400 uppercase text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-50">
+                @foreach (var item in Model)
+                {
+                    <tr class="hover:bg-gray-50/50 transition-all">
+                        <td class="px-6 py-4 font-bold text-gray-400">#@item.CommandeID</td>
+                        <td class="px-6 py-4 font-bold text-gray-800">@item.Utilisateur?.NomUtilisateur</td>
+                        <td class="px-6 py-4 font-black text-indigo-600">@item.MontantTotal.ToString("N2") DHS</td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 rounded-full text-[10px] font-black uppercase @(item.Statut == "Livrée" ? "bg-green-100 text-green-600" : "bg-blue-100 text-blue-600")">
+                                @item.Statut
+                            </span>
+                        </td>
+                        <td class="px-6 py-4 flex justify-center gap-2">
+                            @* On passe MontantTotal au JavaScript *@
+                            <button onclick="editOrder(@item.CommandeID, @item.UtilisateurID, '@item.MontantTotal', '@item.Statut')" class="w-9 h-9 flex items-center justify-center bg-blue-50 text-blue-600 rounded-xl">
+                                <i class="fas fa-edit"></i>
+                            </button>
+                            <form asp-action="DeleteCommande" asp-route-id="@item.CommandeID" method="post" onsubmit="return confirm('Supprimer ?')">
+                                <button type="submit" class="w-9 h-9 flex items-center justify-center bg-red-50 text-red-500 rounded-xl">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* MODAL *@
+<div id="orderModal" class="fixed inset-0 bg-gray-900/60 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-[2.5rem] w-full max-w-md p-10 shadow-2xl overflow-hidden">
+        <h2 id="modalTitle" class="text-2xl font-black mb-8">Commande</h2>
+
+        <form asp-action="UpsertCommande" method="post" class="space-y-5">
+            <input type="hidden" name="CommandeID" id="o_Id" value="0" />
+
+            <div>
+                <label class="block text-xs font-black text-gray-400 uppercase mb-2">Client</label>
+                <select name="UtilisateurID" id="o_User" asp-items="ViewBag.Users" class="w-full bg-gray-50 border-none rounded-2xl p-4"></select>
+            </div>
+
+            <div>
+                <label class="block text-xs font-black text-gray-400 uppercase mb-2">Montant Total</label>
+                @* Utilisation de MontantTotal *@
+                <input name="MontantTotal" id="o_Montant" type="number" step="0.01" class="w-full bg-gray-50 border-none rounded-2xl p-4" required />
+            </div>
+
+            <div>
+                <label class="block text-xs font-black text-gray-400 uppercase mb-2">Statut</label>
+                <select name="Statut" id="o_Statut" class="w-full bg-gray-50 border-none rounded-2xl p-4">
+                    <option value="En attente">En attente</option>
+                    <option value="Expédiée">Expédiée</option>
+                    <option value="Livrée">Livrée</option>
+                </select>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-6">
+                <button type="button" onclick="closeOrderModal()" class="px-6 py-4 text-gray-400 font-bold">Annuler</button>
+                <button type="submit" class="bg-indigo-600 text-white font-black px-10 py-4 rounded-2xl shadow-lg">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    const modal = document.getElementById('orderModal');
+
+    function openOrderModal() {
+        document.getElementById('o_Id').value = "0";
+        document.getElementById('o_Montant').value = "";
+        document.getElementById('o_Statut').value = "En attente";
+        document.getElementById('modalTitle').innerText = "Nouvelle Commande";
+        modal.classList.replace('hidden', 'flex');
+    }
+
+    function editOrder(id, userId, montant, statut) {
+        document.getElementById('o_Id').value = id;
+        document.getElementById('o_User').value = userId;
+        // Correction pour les décimales (virgule vs point)
+        document.getElementById('o_Montant').value = montant.replace(',', '.');
+        document.getElementById('o_Statut').value = statut;
+        document.getElementById('modalTitle').innerText = "Modifier Commande #" + id;
+        modal.classList.replace('hidden', 'flex');
+    }
+
+    function closeOrderModal() {
+        modal.classList.replace('flex', 'hidden');
+    }
+</script>

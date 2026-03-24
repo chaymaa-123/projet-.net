@@ -1,0 +1,321 @@
+﻿@model Readify.Models.Livre
+
+@{
+    ViewData["Title"] = Model.Titre;
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Playfair+Display:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
+
+<style>
+    :root {
+        --accent-pink: #ff4da6;
+        --dark-royal: #1a1a2e;
+        --glass: rgba(255, 255, 255, 0.9);
+        --shadow-sexy: 0 20px 50px rgba(0,0,0,0.1);
+    }
+
+
+    /* --- BOUTON RETOUR CHIC --- */
+    .back-nav {
+        max-width: 900px;
+        margin: 40px auto 0;
+    }
+
+    .btn-back {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        color: var(--dark-royal);
+        text-decoration: none;
+        font-weight: 600;
+        font-size: 0.9rem;
+        transition: 0.3s;
+        opacity: 0.6;
+    }
+
+        .btn-back:hover {
+            opacity: 1;
+            transform: translateX(-5px);
+            color: var(--accent-pink);
+        }
+
+    /* --- CONTENEUR DÉTAILS --- */
+    .detail-container {
+        max-width: 900px;
+        margin: 20px auto 60px;
+        background: var(--glass);
+        backdrop-filter: blur(15px);
+        border-radius: 30px;
+        box-shadow: var(--shadow-sexy);
+        border: 1px solid rgba(255,255,255,0.4);
+        padding: 40px;
+        overflow: hidden;
+    }
+
+    .hero-section {
+        display: flex;
+        gap: 50px;
+        margin-bottom: 40px;
+    }
+
+    /* --- IMAGE AVEC EFFET PROFONDEUR --- */
+    .hero-image-wrapper {
+        flex: 0 0 240px;
+    }
+
+    .book-cover-large {
+        width: 100%;
+        border-radius: 20px;
+        box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+        aspect-ratio: 2/3;
+        object-fit: cover;
+        transition: 0.5s;
+    }
+
+        .book-cover-large:hover {
+            transform: scale(1.02) rotate(-1deg);
+        }
+
+    /* --- INFOS TEXTUELLES --- */
+    .hero-info-wrapper {
+        flex: 1;
+    }
+
+    .genre-tag {
+        display: inline-block;
+        background: linear-gradient(to right, var(--dark-royal), var(--accent-pink));
+        color: white;
+        padding: 5px 18px;
+        border-radius: 100px;
+        font-size: 0.7rem;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 2px;
+        margin-bottom: 15px;
+    }
+
+    .book-title-large {
+        font-family: 'Playfair Display', serif;
+        font-size: 2.8rem;
+        font-weight: 700;
+        line-height: 1.1;
+        margin-bottom: 10px;
+        color: var(--dark-royal);
+    }
+
+    .book-meta {
+        font-size: 0.9rem;
+        color: #7f8c8d;
+        margin-bottom: 25px;
+        font-weight: 400;
+    }
+
+    /* STATS CHIC */
+    .stats-row {
+        display: flex;
+        gap: 30px;
+        margin-bottom: 25px;
+        padding: 15px 0;
+        border-top: 1px solid rgba(0,0,0,0.05);
+        border-bottom: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .stat-item {
+        text-align: left;
+    }
+
+    .stat-value {
+        font-weight: 800;
+        font-size: 1.1rem;
+        color: var(--dark-royal);
+        display: block;
+    }
+
+    .stat-label {
+        font-size: 0.65rem;
+        color: #a4b0be;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+    }
+
+    .price-large {
+        font-size: 2.2rem;
+        font-weight: 800;
+        color: var(--accent-pink);
+        margin-bottom: 30px;
+        font-family: 'Outfit', sans-serif;
+    }
+
+    /* --- BOUTON PANIER SEXY --- */
+    .action-buttons {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+    }
+
+    .btn-cart-add {
+        background: var(--dark-royal);
+        color: white;
+        border: none;
+        padding: 14px 35px;
+        border-radius: 100px;
+        font-size: 1rem;
+        font-weight: 700;
+        cursor: pointer;
+        transition: 0.4s;
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+        box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    }
+
+        .btn-cart-add:hover {
+            background: var(--accent-pink);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(255, 77, 166, 0.3);
+            color: white;
+        }
+
+    .btn-edit-round {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background: white;
+        border: 1px solid #eee;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--dark-royal);
+        transition: 0.3s;
+        text-decoration: none;
+    }
+
+        .btn-edit-round:hover {
+            background: var(--dark-royal);
+            color: white;
+        }
+
+    /* --- SECTION SYNOPSIS --- */
+    .resume-section {
+        margin-top: 20px;
+        padding-top: 30px;
+        border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    .section-title {
+        font-family: 'Playfair Display', serif;
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-style: italic;
+        margin-bottom: 15px;
+    }
+
+    .resume-text {
+        font-size: 1.05rem;
+        line-height: 1.8;
+        color: #4b4b4b;
+        white-space: pre-line;
+        opacity: 0.9;
+    }
+
+    @@media (max-width: 768px) {
+        .hero-section {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .hero-image-wrapper {
+            margin: 0 auto;
+        }
+
+        .stats-row {
+            justify-content: center;
+        }
+
+        .action-buttons {
+            justify-content: center;
+        }
+    }
+</style>
+
+<div class="container">
+    <div class="back-nav">
+        <a asp-action="Affichage" class="btn-back">
+            <i class="fas fa-long-arrow-alt-left"></i> Retour à la bibliothèque
+        </a>
+    </div>
+
+    <div class="detail-container">
+        <div class="hero-section">
+            <div class="hero-image-wrapper">
+                @if (!string.IsNullOrEmpty(Model.ImageUrl))
+                {
+                    <img src="/img/@Model.ImageUrl" alt="@Model.Titre" class="book-cover-large" />
+                }
+                else
+                {
+                    <div style="width:100%; height:100%; background:#f1f2f6; border-radius:20px; display:flex; align-items:center; justify-content:center; aspect-ratio:2/3;">
+                        <i class="fas fa-feather-alt fa-3x" style="color:#ced6e0;"></i>
+                    </div>
+                }
+            </div>
+
+            <div class="hero-info-wrapper">
+                @if (Model.Genre != null)
+                {
+                    <span class="genre-tag">@Model.Genre.NomGenre</span>
+                }
+
+                <h1 class="book-title-large">@Model.Titre</h1>
+
+                <div class="book-meta">
+                    Paru en @(Model.DatePublication?.Year.ToString() ?? "2025") • Édition Premium
+                </div>
+
+                <div class="stats-row">
+                    <div class="stat-item">
+                        <span class="stat-label">Note</span>
+                        <span class="stat-value"><i class="fas fa-star" style="color:#ffdd59"></i> 4.9</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Format</span>
+                        <span class="stat-value">Digital</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Statut</span>
+                        <span class="stat-value">@(Model.EstPubliee ? "Disponible" : "Privé")</span>
+                    </div>
+                </div>
+
+                <div class="price-large">@Model.Prix.ToString("N2") DHS</div>
+                <div class="action-buttons">
+                    @* On pointe vers l'action "Ajouter" du PanierController *@
+                    <form asp-controller="Panier" asp-action="Ajouter" method="post">
+                        @* LivreId est envoyé au contrôleur pour la recherche en base de données *@
+                        <input type="hidden" name="livreId" value="@Model.LivreId" />
+
+                        <button type="submit" class="btn-cart-add">
+                            <i class="fas fa-shopping-bag"></i> Ajouter au panier
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="resume-section">
+            <h3 class="section-title">Synopsis</h3>
+            <div class="resume-text">
+                @if (!string.IsNullOrEmpty(Model.Resume))
+                {
+                    @Model.Resume
+                }
+                else
+                {
+                    <span style="font-style:italic; color:#999;">Cette œuvre n'a pas encore dévoilé ses secrets.</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>

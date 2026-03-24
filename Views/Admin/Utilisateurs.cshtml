@@ -1,0 +1,126 @@
+﻿@model IEnumerable<Readify.Models.Utilisateur>
+@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Utilisateurs";
+}
+
+<div>
+    <header class="flex justify-between items-center mb-10">
+        <h1 class="text-3xl font-black text-gray-900">Membres Readify</h1>
+        <button type="button" onclick="openUserModal()" class="bg-blue-600 text-white px-6 py-3 rounded-2xl font-bold shadow-lg transition-all hover:bg-blue-700">
+            + Nouveau Membre
+        </button>
+    </header>
+
+    @* Tableau *@
+    <div class="bg-white rounded-[2rem] shadow-sm border border-gray-100 overflow-hidden">
+        <table class="w-full text-left">
+            <thead class="bg-gray-50 border-b">
+                <tr>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase">Utilisateur</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase">Email</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase">Rôle</th>
+                    <th class="px-6 py-4 text-xs font-bold text-gray-400 uppercase text-center">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr class="border-b hover:bg-gray-50 transition-colors">
+                        <td class="px-6 py-4 font-bold text-gray-800">@item.NomUtilisateur</td>
+                        <td class="px-6 py-4 text-gray-500">@item.Email</td>
+                        <td class="px-6 py-4">
+                            <span class="px-3 py-1 @(item.Role?.NomRole == "Admin" ? "bg-red-50 text-red-600" : "bg-blue-50 text-blue-600") text-[10px] font-black rounded-full uppercase">
+                                @(item.Role?.NomRole ?? "Client")
+                            </span>
+                        </td>
+                        <td class="px-6 py-4">
+                            <div class="flex justify-center gap-2">
+                                <button type="button" onclick="editUser(@item.UtilisateurID, '@Html.Raw(item.NomUtilisateur.Replace("'", "\\'"))', '@item.Email', @item.RoleID)" class="w-9 h-9 flex items-center justify-center bg-blue-50 text-blue-600 rounded-xl hover:bg-blue-600 hover:text-white transition-all">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <form asp-action="DeleteUser" asp-route-id="@item.UtilisateurID" method="post" onsubmit="return confirm('Supprimer ?')">
+                                    <button type="submit" class="w-9 h-9 flex items-center justify-center bg-red-50 text-red-500 rounded-xl hover:bg-red-600 hover:text-white transition-all">
+                                        <i class="fas fa-trash"></i>
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+
+@* MODAL *@
+<div id="userModal" class="fixed inset-0 bg-gray-900/60 z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-[2.5rem] w-full max-w-md p-10 shadow-2xl relative">
+        <h2 id="modalTitle" class="text-2xl font-black mb-8 text-gray-800">Compte</h2>
+
+        <form asp-action="UpsertUtilisateur" method="post" class="space-y-5">
+            <input type="hidden" name="UtilisateurID" id="m_Id" value="0" />
+
+            <div>
+                <label class="block text-xs font-black text-gray-400 uppercase mb-2">Nom d'utilisateur</label>
+                <input name="NomUtilisateur" id="m_Nom" class="w-full bg-gray-50 border-none rounded-2xl p-4 focus:ring-2 focus:ring-blue-500 outline-none" required />
+            </div>
+
+            <div>
+                <label class="block text-xs font-black text-gray-400 uppercase mb-2">Email</label>
+                <input name="Email" id="m_Email" type="email" class="w-full bg-gray-50 border-none rounded-2xl p-4 focus:ring-2 focus:ring-blue-500 outline-none" required />
+            </div>
+
+            <div>
+                <label class="block text-xs font-black text-gray-400 uppercase mb-2">Mot de passe</label>
+                <input name="MotDePasseHash" type="password" class="w-full bg-gray-50 border-none rounded-2xl p-4 focus:ring-2 focus:ring-blue-500 outline-none" placeholder="Laisser vide si inchangé" />
+            </div>
+
+            <div>
+                <label class="block text-xs font-black text-gray-400 uppercase mb-2">Rôle</label>
+                <select name="RoleID" id="m_Role" asp-items="ViewBag.Roles" class="w-full bg-gray-50 border-none rounded-2xl p-4 focus:ring-2 focus:ring-blue-500 outline-none"></select>
+            </div>
+
+            <div class="flex justify-end gap-3 pt-6">
+                <button type="button" onclick="closeUserModal()" class="px-6 py-4 text-gray-400 font-bold">Annuler</button>
+                <button type="submit" class="bg-blue-600 text-white font-black px-10 py-4 rounded-2xl shadow-lg hover:bg-blue-700 transition-all">Enregistrer</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+
+
+<script>
+    function openUserModal() {
+        document.getElementById('m_Id').value = "0";
+        document.getElementById('m_Nom').value = "";
+        document.getElementById('m_Email').value = "";
+
+        const defaultAdminId = '@ViewBag.AdminRoleId';
+        document.getElementById('m_Role').value = defaultAdminId;
+
+        document.getElementById('modalTitle').innerText = "Nouvel Utilisateur";
+        const modal = document.getElementById('userModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function editUser(id, nom, email, roleId) {
+        document.getElementById('m_Id').value = id;
+        document.getElementById('m_Nom').value = nom;
+        document.getElementById('m_Email').value = email;
+        document.getElementById('m_Role').value = roleId;
+
+        document.getElementById('modalTitle').innerText = "Modifier le Compte";
+        const modal = document.getElementById('userModal');
+        modal.classList.remove('hidden');
+        modal.classList.add('flex');
+    }
+
+    function closeUserModal() {
+        const modal = document.getElementById('userModal');
+        modal.classList.add('hidden');
+        modal.classList.remove('flex');
+    }
+</script>

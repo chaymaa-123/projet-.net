@@ -1,0 +1,35 @@
+﻿@using Readify.Models
+@model List<Livres>
+
+@{
+    ViewData["Title"] = "Panier";
+    bool panierVide = Model == null || !Model.Any();
+}
+
+<div class="text-center mt-5">
+    <h2 class="fw-bold">Votre panier</h2>
+
+    @if (panierVide)
+    {
+        <p class="text-muted mt-3">Votre panier est vide.</p>
+        <a asp-controller="Livres" asp-action="Affichage" class="btn btn-primary btn-lg mt-3">
+            Sélectionne ton livre
+        </a>
+    }
+    else
+    {
+        <p class="text-success mt-3">Vous avez @Model.Count livre(s) dans le panier.</p>
+        <a asp-controller="Panier" asp-action="Valider" class="btn btn-success btn-lg mt-3">
+            Valide ton panier
+        </a>
+        <ul class="list-group mt-4">
+            @foreach (var livre in Model)
+            {
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    @livre.Titre - @livre.Auteur
+                    <a asp-action="Supprimer" asp-route-id="@livre.Id" class="btn btn-danger btn-sm">Supprimer</a>
+                </li>
+            }
+        </ul>
+    }
+</div>

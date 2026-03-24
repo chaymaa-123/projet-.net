@@ -1,0 +1,59 @@
+﻿@{
+    Layout = "_AdminLayout";
+    ViewData["Title"] = "Tableau de Bord";
+}
+
+<div >
+    <h1 class="text-3xl font-black text-gray-900 mb-8">Statistiques Readify</h1>
+
+    @* --- CARTES DE KPI --- *@
+    <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-10">
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <p class="text-gray-500 text-sm font-bold uppercase">Chiffre d'Affaire</p>
+            <p class="text-2xl font-black text-green-600">@ViewBag.ChiffreAffaire.ToString("N2") DHS</p>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <p class="text-gray-500 text-sm font-bold uppercase">Commandes</p>
+            <p class="text-2xl font-black text-blue-600">@ViewBag.TotalCommandes</p>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <p class="text-gray-500 text-sm font-bold uppercase">Utilisateurs</p>
+            <p class="text-2xl font-black text-orange-600">@ViewBag.TotalUsers</p>
+        </div>
+        <div class="bg-white p-6 rounded-3xl shadow-sm border border-gray-100">
+            <p class="text-gray-500 text-sm font-bold uppercase">Livres</p>
+            <p class="text-2xl font-black text-purple-600">@ViewBag.TotalLivres</p>
+        </div>
+    </div>
+
+    @* --- GRAPHIQUE --- *@
+    <div class="bg-white p-8 rounded-[2.5rem] shadow-sm border border-gray-100">
+        <h2 class="text-xl font-bold mb-6 text-gray-800">Évolution des Ventes</h2>
+        <canvas id="salesChart" style="max-height: 400px;"></canvas>
+    </div>
+</div>
+
+@* Script pour le graphique *@
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script>
+    const ctx = document.getElementById('salesChart').getContext('2d');
+    new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Juin', 'Juil'],
+            datasets: [{
+                label: 'Ventes (DHS)',
+                data: [1200, 1900, 3000, 2500, 4500, 3800, 5200], // Données à dynamiser plus tard
+                borderColor: '#4F46E5',
+                backgroundColor: 'rgba(79, 70, 229, 0.1)',
+                fill: true,
+                tension: 0.4
+            }]
+        },
+        options: {
+            responsive: true,
+            plugins: { legend: { display: false } },
+            scales: { y: { beginAtZero: true } }
+        }
+    });
+</script>
