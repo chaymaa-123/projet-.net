@@ -5,12 +5,12 @@ var builder = WebApplication.CreateBuilder(args);
 
 // ======== SERVICES ========
 
-// 1. MVC (Contrôleurs et Vues)
+// 1. MVC (ContrÃ´leurs et Vues)
 builder.Services.AddControllersWithViews();
 
-// 2. Base de données (Connexion SQL Server)
+// 2. Base de donnÃ©es (Connexion SQL Server)
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection")
-                       ?? "Server=(localdb)\\mssqllocalDB;Database=Readify;Trusted_Connection=True;TrustServerCertificate=True;";
+                       ?? "Server=tonServeur;Database=taBaseDonne;Trusted_Connection=True;TrustServerCertificate=True;";
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
@@ -19,12 +19,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 builder.Services.AddDistributedMemoryCache();
 builder.Services.AddSession(options =>
 {
-    options.IdleTimeout = TimeSpan.FromMinutes(30); // Durée de la session
+    options.IdleTimeout = TimeSpan.FromMinutes(30); // DurÃ©e de la session
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
 
-// 4. Authentification (Préparation)
+// 4. Authentification (PrÃ©paration)
 builder.Services.AddAuthentication();
 
 var app = builder.Build();
@@ -40,7 +40,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-// IMPORTANT POUR LES IMAGES : Permet d'accéder au dossier wwwroot
+// IMPORTANT POUR LES IMAGES : Permet d'accÃ©der au dossier wwwroot
 app.UseStaticFiles();
 
 app.UseRouting();
